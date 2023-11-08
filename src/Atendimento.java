@@ -12,6 +12,13 @@ public class Atendimento {
 
 	private Evento evento;
 
+	public Atendimento(int cod, String dataInicio, int duracao, String status) {
+		this.cod = cod;
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
+		this.status = status;
+	}
+
 	public double calculaCusto() {
 		return 0;
 	}
