@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Equipe {
@@ -10,8 +11,14 @@ public class Equipe {
 
 	private double longitude;
 
-	private Collection<Atendimento> atendimento;
+	private ArrayList<Atendimento> atendimento;
 
-	private Collection<Equipamento> equipamento;
+	private ArrayList<Equipamento> equipamento;
 
+	public Equipe(String codinome, int quantidade, double latitude, double longitude) {
+		this.codinome = codinome;
+		this.quantidade = quantidade;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
 }
