@@ -2,6 +2,7 @@ package aplicacao;
 
 import dados.Atendimento;
 import dados.Equipe;
+import dados.*;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class ACMERescue {
         atendimentos = new ArrayList<>();
     }
     public void executa(){
+        new Janela();
     }
 
     public void cadastraEvento() {
