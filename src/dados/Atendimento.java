@@ -1,3 +1,4 @@
+package dados;
 public class Atendimento {
 
 	private int cod;

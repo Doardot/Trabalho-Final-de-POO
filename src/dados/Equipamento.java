@@ -1,3 +1,5 @@
+package dados;
+
 public class Equipamento {
 
 	private int id;

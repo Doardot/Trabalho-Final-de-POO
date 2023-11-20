@@ -1,3 +1,5 @@
+package dados;
+
 public class Evento {
 
 	private String codigo;

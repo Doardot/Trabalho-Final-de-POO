@@ -1,3 +1,5 @@
+package dados;
+
 public class Ciclone extends Evento {
 
 	private double velocidade;
