@@ -1,3 +1,4 @@
+package dados;
 public class Atendimento {
 
 	private int cod;
@@ -11,6 +12,13 @@ public class Atendimento {
 	private Equipe equipe;
 
 	private Evento evento;
+
+	public Atendimento(int cod, String dataInicio, int duracao, String status) {
+		this.cod = cod;
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
+		this.status = status;
+	}
 
 	public double calculaCusto() {
 		return 0;
