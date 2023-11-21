@@ -1,17 +1,21 @@
 package Equipamentos;
 
-public class Barco extends Equipamento{
-    private int capacidade;
+public class Caminhao extends Equipamento{
 
-    public Barco(int id, String nome, double custoDia, int capacidade) {
+    private double capacidade;
+
+    public Caminhao(int id, String nome, double custoDia, double capacidade) {
         super(id, nome, custoDia);
         this.capacidade = capacidade;
     }
-
-
 
     @Override
     public String toString() {
         return super.toString() + ", Capacidade: " + capacidade;
     }
+
+
+
+
+
 }

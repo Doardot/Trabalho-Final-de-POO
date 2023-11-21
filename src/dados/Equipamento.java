@@ -1,19 +1,23 @@
-package dados;
+package Equipamentos;
 
 public class Equipamento {
+    private int id;
+    private String nome;
+    private double custoDia;
 
-	private int id;
+    public Equipamento(int id, String nome, double custoDia) {
+        this.id = id;
+        this.nome = nome;
+        this.custoDia = custoDia;
+    }
 
-	private String nome;
 
-	private double custoDia;
+    public int getId() {
+        return id;
+    }
 
-	private Equipe equipe;
 
-	public Equipamento(int id, String nome, double custoDia) {
-		this.id = id;
-		this.nome = nome;
-		this.custoDia = custoDia;
-	}
-
+    public String toString() {
+        return "Id: " +id +","+ " nome: " +  nome + ", Custo por dia: "+ custoDia;
+    }
 }
