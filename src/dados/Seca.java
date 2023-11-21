@@ -9,5 +9,8 @@ public class Seca extends Evento {
 		this.estiagem = estiagem;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Seca (" + super.toString() + ", estiagem: " + estiagem + ");";
+	}
 }

@@ -10,7 +10,8 @@ public class Terremoto extends Evento {
 		this.magnitude = magnitude;
 	}
 
-
-
-	
+	@Override
+	public String toString() {
+		return "Ciclone (" + super.toString() + ", magnetude: " + magnitude + ");";
+	}
 }

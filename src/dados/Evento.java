@@ -20,5 +20,12 @@ public class Evento {
 		this.atendimento = atendimento;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "codigo: " + codigo +  ", data: " + data + ", latitude: " + latitude +  ", longitude: " + longitude;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
 }

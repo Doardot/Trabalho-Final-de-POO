@@ -12,8 +12,8 @@ public class Ciclone extends Evento {
 		this.precipitacao = precipitacao;
 	}
 
-	
-
-
-
+	@Override
+	public String toString() {
+		return "Ciclone (" + super.toString() + ", velociadde: " + velocidade + ", precipitação: " + precipitacao + ");";
+	}
 }
