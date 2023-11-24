@@ -5,14 +5,16 @@ import dados.Equipe;
 import dados.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ACMERescue {
-
+    private ArrayList<Evento> eventos;
     private ArrayList<Equipe> equipes;
     private ArrayList<Atendimento> atendimentos;
 
 
     public ACMERescue() {
+        eventos = new ArrayList<>();
         equipes = new ArrayList<>();
         atendimentos = new ArrayList<>();
     }
@@ -20,7 +22,15 @@ public class ACMERescue {
         new Janela();
     }
 
-    public void cadastraEvento() {
+    public boolean cadastraEvento(Evento evento) {
+        for (int i = 0; i < eventos.size(); i++) {
+            if (eventos.get(i).getCodigo() .equals(evento.getCodigo())) {
+                return false;
+            }
+        }
+        eventos.add(evento);
+        ordena();
+        return true;
     }
 
     public void cadastraEquipe () {
@@ -54,6 +64,12 @@ public class ACMERescue {
     }
 
     public void carregarDados() {
+
+    }
+
+    private void ordena() {
+        eventos.sort(Comparator.comparing(Evento::getCodigo));
+        equipes.sort(Comparator.comparing(Equipe::getCodinome));
     }
 
     public void finalizarSistema() {
