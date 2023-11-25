@@ -1,9 +1,12 @@
-import Equipamentos.*;
+package aplicacao;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.InputMismatchException;
+
+import dados.*;
 
 public class ACMEEquipamentos {
 
