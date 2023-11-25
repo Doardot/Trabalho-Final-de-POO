@@ -5,19 +5,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class JanelaDeErro extends JFrame implements ActionListener {
-    private JTextPane campoDeErro;
+    private JLabel campoDeErro;
     private JPanel painel;
     private JButton OKButton;
+    private JTextPane campoDeTexto;
 
-    public JanelaDeErro() {
+    public JanelaDeErro(String erro) {
 
-        this.setSize(300,200);
+        OKButton.addActionListener(this);
+        this.setSize(450,200);
         this.add(painel);
         this.setVisible(true);
+        this.setResizable(false);
+        campoDeTexto.setText(erro);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.dispose();
+
+        if(e.getSource() == OKButton) this.dispose();
     }
 }
