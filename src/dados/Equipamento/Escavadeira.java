@@ -1,6 +1,5 @@
 package dados.Equipamento;
 
-import dados.Equipamento.Equipamento;
 
 public class Escavadeira extends Equipamento {
 

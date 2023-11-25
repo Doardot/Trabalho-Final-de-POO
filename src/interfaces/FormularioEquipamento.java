@@ -72,14 +72,14 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
             String name = "";
             double custo = 0;
             boolean verifica = true;
+            String texto = "";
             try {
 
                 try {
                     id = Integer.parseInt(idNametxt.getText());
                 }catch (NumberFormatException erro1){
-                    String texto = areaDeSaida.getText();
+
                     texto += "Erro: Numero invalido no campo id\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
@@ -89,18 +89,14 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         throw new InputMismatchException();
                     }
                 }catch(InputMismatchException erro2) {
-                    String texto = areaDeSaida.getText();
                     texto += "Erro: Nome nao pode ser nulo\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
                 try {
                     custo = Double.parseDouble(custoDiatxt.getText());
                 }catch (NumberFormatException erro3){
-                    String texto = areaDeSaida.getText();
                     texto += "Erro: Valor de custo invalido\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
@@ -116,15 +112,13 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
                         }
                         catch (NumberFormatException ei) {
-                            String texto = areaDeSaida.getText();
                             texto += "Erro: Capacidade nao pode ser nula\n";
-                            areaDeSaida.setText(texto);
                             verifica = false;
                         }
                         if(capacidade > -1) {
                             if(verifica) {
                                 acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
-                                String texto = areaDeSaida.getText();
+                                texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
                             }
@@ -137,15 +131,13 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                             capacidade = Integer.parseInt(capacidadeBarcoText.getText());
 
                         }catch (NumberFormatException eu) {
-                            String texto = areaDeSaida.getText();
                             texto += "Erro: Capacidade nao pode ser nula\n";
-                            areaDeSaida.setText(texto);
                             verifica = false;
                         }
                         if(capacidade > 0) {
                             if(verifica) {
                                 acmeEquipamentos.adicionaBarco(id, name, custo, capacidade);
-                                String texto = areaDeSaida.getText();
+                                texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
                             }
@@ -160,25 +152,21 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                                 throw new InputMismatchException();
                             }
                         }catch (InputMismatchException i) {
-                            String texto = areaDeSaida.getText();
                             texto += "Erro: Combustivel nao pode ser nulo\n";
-                            areaDeSaida.setText(texto);
                             verifica = false;
                         }
 
                         try {
                             carga = Double.parseDouble(escavadeiraCargaText.getText());
                         }catch (NumberFormatException ey) {
-                                String texto = areaDeSaida.getText();
-                                texto += "Erro: Carga nao pode ser nula \n";
-                                areaDeSaida.setText(texto);
+                                texto += "Erro: Carga nao pode ser nula\n";
                                 verifica = false;
 
                         }
                         if(carga > 0) {
                             if (verifica) {
                                 acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
-                                String texto = areaDeSaida.getText();
+                                texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
                             }
@@ -189,11 +177,11 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                 }
 
             } catch (NullPointerException ex) {
-                String texto = areaDeSaida.getText();
-                texto += "Erro: Id ja cadastrado\n";
-                areaDeSaida.setText(texto);
-            }
 
+                texto += "Erro: Id ja cadastrado\n";
+
+            }
+            new JanelaDeErro(texto);
 
         }
             /*

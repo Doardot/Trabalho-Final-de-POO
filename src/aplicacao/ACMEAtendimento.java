@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ACMEAtendimento {
     private ArrayList<Atendimento> atendimentos;
+
     public ArrayList<Atendimento> getAtendimentos() {
         return atendimentos;
     }

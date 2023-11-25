@@ -1,6 +1,5 @@
 package aplicacao;
 
-import dados.Equipe.Equipe;
 import dados.Evento.Evento;
 
 import java.util.ArrayList;
