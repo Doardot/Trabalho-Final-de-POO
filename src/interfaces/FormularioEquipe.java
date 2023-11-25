@@ -1,4 +1,6 @@
 package interfaces;
+
+import aplicacao.*;
 import dados.*;
 
 import javax.swing.*;
@@ -7,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class Formulario {
+public class FormularioEquipe {
     private JPanel painel;
     private JTextField insereCod;
     private JTextField insereQuant;
@@ -31,7 +33,7 @@ public class Formulario {
 
     private Equipes equipesArray = new Equipes();
 
-    public Formulario() {
+    public FormularioEquipe(ACMEEquipe equipes) {
 
         //botão para confirmar o cadastramento
         okBotao.addActionListener(new ActionListener() {
