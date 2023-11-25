@@ -8,10 +8,6 @@ public class Equipe {
 	private int quantidade; // quantidade de membros
 	private double latitude; // localização da equipe
 	private double longitude;
-
-	private ArrayList<Atendimento> atend;
-	private ArrayList<Equipamento> equipamento;
-	private Atendimento atendimento;
 	private ArrayList<Equipamento> equipamentos;
 
 	public Equipe(String codinome, int quantidade, double latitude, double longitude) {
@@ -24,17 +20,21 @@ public class Equipe {
 	public String getCodinome() { return codinome; }
 	public int getQuantidade() { return quantidade; }
 
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public ArrayList<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
+
 	public String toString() {
 		return "Codinome: " + codinome + " Quantidade de membros: " + quantidade
 				+ " Latitude: " + latitude + " Longitude: " + longitude;
 	}
 
-	public double custoEquipamento() {
-		double custo = 0.0;
-		for (Equipamento e : equipamentos) {
-			custo += e.getCustoDia();
-		}
-		custo = custo * atendimento.getDuracao();
-		return custo;
-	}
 }

@@ -1,6 +1,8 @@
 package interfaces;
-import dados.*;
+
 import aplicacao.*;
+import dados.*;
+
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package Equipamentos;
+package dados;
 
 public class Escavadeira extends Equipamento{
 

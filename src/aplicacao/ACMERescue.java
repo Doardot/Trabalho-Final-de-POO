@@ -33,10 +33,10 @@ public class ACMERescue {
         return true;
     }
 
-    public void cadastraEquipe () {
+    public void cadastraEquipe (Equipe equipe) {
     }
 
-    public void cadastraEquipamento () {
+    public void cadastraEquipamento (Equipamento equipamento) {
     }
 
     public void cadastraAtendimento () {
@@ -65,6 +65,18 @@ public class ACMERescue {
 
     public void carregarDados() {
 
+    }
+
+    public ArrayList<Evento> getEventos() {
+        return eventos;
+    }
+
+    public ArrayList<Equipe> getEquipes() {
+        return equipes;
+    }
+
+    public ArrayList<Atendimento> getAtendimentos() {
+        return atendimentos;
     }
 
     private void ordena() {

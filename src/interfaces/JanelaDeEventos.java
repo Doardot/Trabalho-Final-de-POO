@@ -1,4 +1,8 @@
-import Equipamentos.*;
+package interfaces;
+
+import aplicacao.*;
+import dados.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +12,7 @@ import java.util.InputMismatchException;
 
 public class JanelaDeEventos extends JFrame implements ActionListener, ItemListener {
 
-    private ACMEApp acmeApp;
+    private ACMERescue acmeRescue;
     private JLabel equipeName;
     private JPanel janelaPrincipal;
     private JLabel idPanel;
@@ -39,7 +43,7 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
 
 
     public JanelaDeEventos() {
-        acmeApp = new ACMEApp();
+        acmeRescue = new ACMERescue();
 
         setContentPane(janelaPrincipal);
         setTitle("Cadastra equipe");
@@ -120,7 +124,7 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
                         }
                         if(capacidade > -1) {
                             if(verifica) {
-                                acmeApp.adicionaCaminhao(id, name, custo, capacidade);
+                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -141,7 +145,7 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
                         }
                         if(capacidade > 0) {
                             if(verifica) {
-                                acmeApp.adicionaBarco(id, name, custo, capacidade);
+                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -174,7 +178,7 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
                         }
                         if(carga > 0) {
                             if (verifica) {
-                                acmeApp.adicionaEscavadeira(id, name, custo, combustivel, carga);
+                                acmeRescue.cadastraEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -193,26 +197,26 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
 
 
         }
-
+            /*
             if (e.getSource() == showList) {
-                if (acmeApp.getLista().size() == 0) {
+                if (acmeRescue.getLista().size() == 0) {
                     String texto = areaDeSaida.getText();
                     texto += "Erro: Lista vazia\n";
                     areaDeSaida.setText(texto);
                 }
 
 
-                acmeApp.organizaLista();
+                acmeRescue.organizaLista();
                 Equipamento aux = null;
                 String texto = areaDeSaida.getText();
-                for (int i = 0; i < acmeApp.getLista().size(); i++) {
-                    aux = acmeApp.getLista().get(i);
+                for (int i = 0; i < acmeRescue.getLista().size(); i++) {
+                    aux = acmeRescue.getLista().get(i);
                     texto += aux.toString() + "\n";
 
                 }
                 areaDeSaida.setText(texto);
-
             }
+            */
 
             if (e.getSource() == button1) {
                 idNametxt.setText("");

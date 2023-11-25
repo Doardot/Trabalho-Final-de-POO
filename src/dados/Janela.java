@@ -3,10 +3,10 @@ import interfaces.*;
 
 import javax.swing.*;
 public class Janela extends JFrame {
-    private Formulario form;
+    private FormularioEquipe form;
     public Janela() {
         super();
-        form = new Formulario();
+        form = new FormularioEquipe();
         this.add(form.getPainel());
 
         this.setTitle("Cadastro da equipe");
