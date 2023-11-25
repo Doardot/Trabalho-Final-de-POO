@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Equipe.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +31,7 @@ public class FormularioEquipe {
         return painel;
     }
 
-    private Equipes equipesArray = new Equipes();
+    private ACMEEquipe equipesArray = new ACMEEquipe();
 
     public FormularioEquipe(ACMEEquipe equipes) {
 
@@ -77,7 +77,6 @@ public class FormularioEquipe {
                         if(cadastra) {
                             if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi))) {
                                 campoTexto.append("Equipe cadastrada com sucesso!" + "\n" + equipesArray.getEquipes().get(equipesArray.getEquipes().size() - 1).toString() + "\n");
-                                equipesArray.ordenaEquipes();
                             } else {
                                 campoTexto.append("\n" + "Equipe já cadastrada!" + "\n");
                             }

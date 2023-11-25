@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Equipamento.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,6 @@ import java.awt.event.ItemListener;
 import java.util.InputMismatchException;
 
 public class FormularioEquipamento extends JFrame implements ActionListener, ItemListener {
-
     private ACMEEquipamento acmeEquipamentos;
     private JLabel equipeName;
     private JPanel janelaPrincipal;
