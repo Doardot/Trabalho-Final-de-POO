@@ -33,7 +33,7 @@ public class FormularioEquipe {
 
     private Equipes equipesArray = new Equipes();
 
-    public FormularioEquipe() {
+    public FormularioEquipe(ACMEEquipe equipes) {
 
         //botão para confirmar o cadastramento
         okBotao.addActionListener(new ActionListener() {

@@ -10,7 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.InputMismatchException;
 
-public class JanelaDeEventos extends JFrame implements ActionListener, ItemListener {
+public class FormularioEquipamento extends JFrame implements ActionListener, ItemListener {
 
     private ACMERescue acmeRescue;
     private JLabel equipeName;
@@ -42,7 +42,7 @@ public class JanelaDeEventos extends JFrame implements ActionListener, ItemListe
     private JButton exitButton;
 
 
-    public JanelaDeEventos() {
+    public FormularioEquipamento(ACMEEquipamento equipamentos) {
         acmeRescue = new ACMERescue();
 
         setContentPane(janelaPrincipal);

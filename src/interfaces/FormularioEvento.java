@@ -41,7 +41,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
     private JLabel estLab;
     private JTextArea textArea;
 
-    public FormularioEvento() {
+    public FormularioEvento(ACMEEvento eventos) {
         this.add(painel);
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

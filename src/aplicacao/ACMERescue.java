@@ -19,7 +19,7 @@ public class ACMERescue {
         atendimentos = new ArrayList<>();
     }
     public void executa(){
-        new Janela();
+
     }
 
     public boolean cadastraEvento(Evento evento) {
