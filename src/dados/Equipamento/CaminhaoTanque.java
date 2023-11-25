@@ -1,4 +1,6 @@
-package dados;
+package dados.Equipamento;
+
+import dados.Equipamento.Equipamento;
 
 public class CaminhaoTanque extends Equipamento {
 

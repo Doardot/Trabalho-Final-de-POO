@@ -1,5 +1,4 @@
-import aplicacao.*;
-import dados.*;
+
 import interfaces.JanelaPrincipal;
 
 public class Main {

@@ -1,7 +1,8 @@
-package dados;
+package dados.Equipe;
+
+import dados.Equipamento.Equipamento;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Equipe {
 	private String codinome; // nome da equipe

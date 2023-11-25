@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Equipamento.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,7 @@ import java.util.InputMismatchException;
 
 public class FormularioEquipamento extends JFrame implements ActionListener, ItemListener {
 
-    private ACMERescue acmeRescue;
+    private ACMEEquipamento acmeEquipamento;
     private JLabel equipeName;
     private JPanel janelaPrincipal;
     private JLabel idPanel;
@@ -43,7 +43,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
 
     public FormularioEquipamento(ACMEEquipamento equipamentos) {
-        acmeRescue = new ACMERescue();
+        acmeEquipamento = new ACMEEquipamento();
 
         setContentPane(janelaPrincipal);
         setTitle("Cadastra equipe");
@@ -124,7 +124,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > -1) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
+                                acmeEquipamento.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -145,7 +145,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > 0) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
+                                acmeEquipamento.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -178,7 +178,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(carga > 0) {
                             if (verifica) {
-                                acmeRescue.cadastraEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
+                                acmeEquipamento.cadastraEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);

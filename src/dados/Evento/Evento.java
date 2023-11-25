@@ -1,15 +1,10 @@
-package dados;
+package dados.Evento;
 
 public class Evento {
-
 	private String codigo;
-
 	private String data;
-
 	private double latitude;
-
 	private double longitude;
-
 
 	public Evento(String codigo, String data, double latitude, double longitude) {
 		this.codigo = codigo;

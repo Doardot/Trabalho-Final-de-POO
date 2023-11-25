@@ -1,6 +1,8 @@
-package dados;
+package dados.Equipamento;
 
-public class Escavadeira extends Equipamento{
+import dados.Equipamento.Equipamento;
+
+public class Escavadeira extends Equipamento {
 
    private String combustivel;
    private double carga;

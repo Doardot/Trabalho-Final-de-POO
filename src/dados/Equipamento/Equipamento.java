@@ -1,4 +1,4 @@
-package dados;
+package dados.Equipamento;
 public class Equipamento {
     private int id;
     private String nome;

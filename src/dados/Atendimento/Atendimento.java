@@ -1,4 +1,9 @@
-package dados;
+package dados.Atendimento;
+
+import dados.Equipamento.Equipamento;
+import dados.Equipe.Equipe;
+import dados.Evento.Evento;
+
 public class Atendimento {
 	private int cod;
 	private String dataInicio;

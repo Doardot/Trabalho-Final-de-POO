@@ -1,6 +1,8 @@
-package dados;
+package dados.Equipamento;
 
-public class Barco extends Equipamento{
+import dados.Equipamento.Equipamento;
+
+public class Barco extends Equipamento {
     private int capacidade;
 
     public Barco(int id, String nome, double custoDia, int capacidade) {

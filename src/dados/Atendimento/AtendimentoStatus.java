@@ -1,4 +1,4 @@
-package dados;
+package dados.Atendimento;
 
 public enum AtendimentoStatus {
     PEN ("PENDENTE"),

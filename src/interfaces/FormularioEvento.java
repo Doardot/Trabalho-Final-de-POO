@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Evento.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class FormularioEvento extends JFrame implements ActionListener, ItemListener {
-    private ACMERescue acmeRescue;
+    private ACMEEvento acmeEvento;
     private JPanel painel;
     private JTextField codText;
     private JFormattedTextField dataText;
@@ -46,7 +46,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        acmeRescue = new ACMERescue();
+        acmeEvento = new ACMEEvento();
 
         magLab.setVisible(false);
         magText.setVisible(false);
@@ -140,7 +140,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
 
             String str = textArea.getText();
             try {
-                acmeRescue.cadastraEvento(evento);
+                acmeEvento.cadastraEvento(evento);
                 str += "EVENTO ADICIONADO: ";
                 str += evento.toString() + "\n";
                 textArea.setText(str);

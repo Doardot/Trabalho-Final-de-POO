@@ -1,4 +1,4 @@
-package dados;
+package dados.Evento;
 
 public class Ciclone extends Evento {
 
