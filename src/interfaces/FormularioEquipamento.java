@@ -12,7 +12,7 @@ import java.util.InputMismatchException;
 
 public class FormularioEquipamento extends JFrame implements ActionListener, ItemListener {
 
-    private ACMERescue acmeRescue;
+    private ACMEEquipamento acmeEquipamentos;
     private JLabel equipeName;
     private JPanel janelaPrincipal;
     private JLabel idPanel;
@@ -43,7 +43,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
 
     public FormularioEquipamento(ACMEEquipamento equipamentos) {
-        acmeRescue = new ACMERescue();
+        this.acmeEquipamentos = equipamentos;
 
         setContentPane(janelaPrincipal);
         setTitle("Cadastra equipe");
@@ -124,7 +124,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > -1) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
+                                acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -145,7 +145,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > 0) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
+                                acmeEquipamentos.adicionaBarco(id, name, custo, capacidade);
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -178,7 +178,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(carga > 0) {
                             if (verifica) {
-                                acmeRescue.cadastraEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
+                                acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
                                 String texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
