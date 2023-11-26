@@ -17,6 +17,7 @@ public class JanelaDeErro extends JFrame implements ActionListener {
         this.add(painel);
         this.setVisible(true);
         this.setResizable(false);
+        campoDeTexto.setOpaque(false);
         campoDeTexto.setText(erro);
 
     }
