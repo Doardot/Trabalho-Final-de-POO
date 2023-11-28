@@ -218,7 +218,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
             }
 
             if (e.getSource() == exitButton) {
-                System.exit(0);
+                this.dispose();
             }
         }
 

@@ -46,7 +46,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
             FormularioEvento formEvento = new FormularioEvento(evento);
         }
         if(e.getSource() == equipeBotao) {
-
             FormularioEquipe formEquipe = new FormularioEquipe(equipe);
         }
         if(e.getSource() == equipamentoBotao) {
@@ -55,8 +54,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         if(e.getSource() ==fecharBotao) {
             System.exit(0);
         }
-
-
     }
     public void cadastraAtendimento () {
     }
