@@ -4,14 +4,12 @@ import aplicacao.ACMEAtendimento;
 import aplicacao.ACMEEquipamento;
 import aplicacao.ACMEEquipe;
 import aplicacao.ACMEEvento;
-//import dados.Equipamento.Equipamento;
 import dados.Equipamento.*;
 import dados.Equipe.Equipe;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class JanelaPrincipal extends JFrame implements ActionListener {
     private ACMEEquipe ACMEequipe;
@@ -56,23 +54,31 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
                 Equipamento equipamentoIN = null;
                 for (Equipamento eq : ACMEequipamento.getLista()) {
-                    if (eq.getNome().equals(equipamentoSelecionado)) {
+                    if (eq.getNome().equalsIgnoreCase(equipamentoSelecionado)) {
                         equipamentoIN = eq;
+                        /*
+                        código de teste
+                        textoVinc.append("equipamento: " + equipamentoIN.getNome());
+                         */
                         break;
                     }
                 }
 
                 Equipe equipeIN = null;
                 for (Equipe eq : ACMEequipe.getEquipes()) {
-                    if (eq.getCodinome().equals(equipeSelecionada)) {
+                    if (eq.getCodinome().equalsIgnoreCase(equipeSelecionada)) {
                         equipeIN = eq;
+                        /*
+                        código de teste
+                        textoVinc.append("cod " + equipeIN.getCodinome());
+                        */
                         break;
                     }
                 }
 
                 if (equipamentoIN != null && equipeIN != null) {
                     equipeIN.setEquipamento(equipamentoIN);
-                    textoVinc.append("Equipamento " + equipamentoSelecionado + " vinculado à equipe " + equipeSelecionada + "\n");
+                    textoVinc.append("Equipamento: " + equipamentoSelecionado + " vinculado à equipe: " + equipeSelecionada + "\n");
                 } else {
                     textoVinc.append("Equipamento ou equipe não encontrados\n");
                 }

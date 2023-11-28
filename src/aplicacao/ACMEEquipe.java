@@ -10,6 +10,10 @@ public class ACMEEquipe {
 
     public ACMEEquipe() {
         equipeArray = new ArrayList<>();
+
+        //equipe de teste
+        Equipe a = new Equipe("a", 5, 10.0, 10.0, null);
+        equipeArray.add(a);
     }
 
     public ArrayList<Equipe> getEquipes() {
