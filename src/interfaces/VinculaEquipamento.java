@@ -22,8 +22,6 @@ public class VinculaEquipamento {
     private JButton confirmaButton;
 
     private ACMEEquipe ACMEequipe;
-    private ACMEEvento ACMEevento;
-    private ACMEAtendimento ACMEatendimento;
     private ACMEEquipamento ACMEequipamento;
 
 
@@ -62,6 +60,7 @@ public class VinculaEquipamento {
                     equipeIN.setEquipamento(equipamentoIN);
                     textoVinc.append("Equipamento: " + equipamentoSelecionado + " vinculado à equipe: " + equipeSelecionada + "\n");
                 } else {
+                    new JanelaDeErro("Equipamento ou equipe não encontrados\n");
                     textoVinc.append("Equipamento ou equipe não encontrados\n");
                 }
             }
