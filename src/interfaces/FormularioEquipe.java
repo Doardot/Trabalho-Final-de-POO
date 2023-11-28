@@ -1,6 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
+import dados.Equipamento.Equipamento;
 import dados.Equipe.*;
 
 import javax.swing.*;
@@ -75,7 +76,7 @@ public class FormularioEquipe {
                         }
 
                         if(cadastra) {
-                            if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi))) {
+                            if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi, null))) {
                                 campoTexto.append("Equipe cadastrada com sucesso!" + "\n" + equipesArray.getEquipes().get(equipesArray.getEquipes().size() - 1).toString() + "\n");
                             } else {
                                 campoTexto.append("\n" + "Equipe já cadastrada!" + "\n");
