@@ -10,4 +10,15 @@ public class ACMEAtendimento {
     public ArrayList<Atendimento> getAtendimentos() {
         return atendimentos;
     }
+
+    public boolean cadastraAtendimento(Atendimento atendimento) {
+        for (Atendimento a: atendimentos) {
+            if (a.getCod() == atendimento.getCod()) {
+                return false;
+            }
+        }
+        atendimentos.add(atendimento);
+        return true;
+    }
+
 }

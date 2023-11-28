@@ -40,7 +40,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == atendimentoBotao) {
-            // adicionar formulario de atendimento
+            FormularioAtendimento formAtendimento = new FormularioAtendimento(atendimento, equipe, evento);
         }
         if(e.getSource() == eventoBotao) {
             FormularioEvento formEvento = new FormularioEvento(evento);
