@@ -25,11 +25,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JButton atendimentoBotao;
     private JPanel JanelaPrincipal;
     private JLabel tituloTrab;
-    private JButton vincularEquip;
-    private JTextField insereEquipe;
-    private JTextField insereEquipamento;
-    private JButton botaoConfirma;
-    private JTextArea textoVinc;
 
     public JanelaPrincipal() {
         ACMEequipe = new ACMEEquipe();
@@ -39,51 +34,13 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
         this.setVisible(true);
         this.add(JanelaPrincipal);
-        this.setSize(700,600);
+        this.setSize(700, 600);
         atendimentoBotao.addActionListener(this);
         eventoBotao.addActionListener(this);
         equipeBotao.addActionListener(this);
         equipamentoBotao.addActionListener(this);
         fecharBotao.addActionListener(this);
 
-        vincularEquip.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String equipamentoSelecionado = insereEquipamento.getText();
-                String equipeSelecionada = insereEquipe.getText();
-
-                Equipamento equipamentoIN = null;
-                for (Equipamento eq : ACMEequipamento.getLista()) {
-                    if (eq.getNome().equalsIgnoreCase(equipamentoSelecionado)) {
-                        equipamentoIN = eq;
-                        /*
-                        código de teste
-                        textoVinc.append("equipamento: " + equipamentoIN.getNome());
-                         */
-                        break;
-                    }
-                }
-
-                Equipe equipeIN = null;
-                for (Equipe eq : ACMEequipe.getEquipes()) {
-                    if (eq.getCodinome().equalsIgnoreCase(equipeSelecionada)) {
-                        equipeIN = eq;
-                        /*
-                        código de teste
-                        textoVinc.append("cod " + equipeIN.getCodinome());
-                        */
-                        break;
-                    }
-                }
-
-                if (equipamentoIN != null && equipeIN != null) {
-                    equipeIN.setEquipamento(equipamentoIN);
-                    textoVinc.append("Equipamento: " + equipamentoSelecionado + " vinculado à equipe: " + equipeSelecionada + "\n");
-                } else {
-                    textoVinc.append("Equipamento ou equipe não encontrados\n");
-                }
-            }
-    });
     }
 
     public void actionPerformed(ActionEvent e) {
