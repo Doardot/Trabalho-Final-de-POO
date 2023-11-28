@@ -9,13 +9,15 @@ public class Equipe {
 	private int quantidade; // quantidade de membros
 	private double latitude; // localização da equipe
 	private double longitude;
+	private Equipamento equipamento;
 	private ArrayList<Equipamento> equipamentos;
 
-	public Equipe(String codinome, int quantidade, double latitude, double longitude) {
+	public Equipe(String codinome, int quantidade, double latitude, double longitude, Equipamento equipamento){
 		this.codinome = codinome;
 		this.quantidade = quantidade;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.equipamento = equipamento;
 	}
 
 	public String getCodinome() { return codinome; }
@@ -27,6 +29,10 @@ public class Equipe {
 
 	public double getLongitude() {
 		return longitude;
+	}
+
+	public void setEquipamento(Equipamento equipamento) {
+		this.equipamento = equipamento;
 	}
 
 	public ArrayList<Equipamento> getEquipamentos() {

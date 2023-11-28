@@ -8,7 +8,12 @@ import dados.Equipamento.Equipamento;
 
 public class ACMEEquipamento {
     private ArrayList<Equipamento> equipamento;
-    public ACMEEquipamento() { equipamento = new ArrayList<>(); }
+    public ACMEEquipamento() {
+        equipamento = new ArrayList<>();
+
+        //equipamento de teste
+        adicionaCaminhao(1, "a", 100, 100);
+    }
 
     public void organizaLista() {
         if(equipamento.size() == 0) {
