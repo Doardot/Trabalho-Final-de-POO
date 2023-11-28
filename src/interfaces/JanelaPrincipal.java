@@ -21,6 +21,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JButton atendimentoBotao;
     private JPanel JanelaPrincipal;
     private JLabel tituloTrab;
+    private JButton relatorioGeral;
+    private JButton vinculaEquipa;
 
     public JanelaPrincipal() {
         equipe = new ACMEEquipe();
@@ -35,6 +37,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         eventoBotao.addActionListener(this);
         equipeBotao.addActionListener(this);
         equipamentoBotao.addActionListener(this);
+        relatorioGeral.addActionListener(this);
         fecharBotao.addActionListener(this);
     }
 
@@ -51,7 +54,13 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         if(e.getSource() == equipamentoBotao) {
             FormularioEquipamento formEquipamento = new FormularioEquipamento(equipamento);
         }
-        if(e.getSource() ==fecharBotao) {
+        if(e.getSource() == relatorioGeral) {
+            RelatorioGeral relatorioGeral1 = new RelatorioGeral(equipe, evento, atendimento, equipamento);
+        }
+        if(e.getSource()== vinculaEquipa) {
+            VinculaEquipamento formVinculaEquipamento = new VinculaEquipamento();
+        }
+        if(e.getSource() == fecharBotao) {
             System.exit(0);
         }
     }

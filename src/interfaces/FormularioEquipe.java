@@ -1,15 +1,15 @@
 package interfaces;
 
 import aplicacao.*;
+import dados.Equipamento.Equipamento;
 import dados.Equipe.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.event.*;
+
 
 public class FormularioEquipe extends JFrame implements ActionListener {
+
     private JPanel painel;
     private JTextField insereCod;
     private JTextField insereQuant;
@@ -34,6 +34,10 @@ public class FormularioEquipe extends JFrame implements ActionListener {
     private ACMEEquipe equipesArray = new ACMEEquipe();
 
     public FormularioEquipe(ACMEEquipe equipes) {
+        this.add(painel);
+        this.pack();
+        this.dispose();
+        this.setVisible(true);
 
         this.add(painel);
         this.pack();
@@ -42,6 +46,7 @@ public class FormularioEquipe extends JFrame implements ActionListener {
 
         //botão para confirmar o cadastramento
         okBotao.addActionListener(this);
+
         //mostra os dados cadastrados
         dadosBotao.addActionListener(this);
         //limpa todos os campos e a área de texto
@@ -98,7 +103,7 @@ public class FormularioEquipe extends JFrame implements ActionListener {
                 }
 
                 if (cadastra) {
-                    if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi))) {
+                    if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi, null))) {
                         campoTexto.append("Equipe cadastrada com sucesso!" + "\n" + equipesArray.getEquipes().get(equipesArray.getEquipes().size() - 1).toString() + "\n");
                     } else {
                         campoTexto.append("\n" + "Equipe já cadastrada!" + "\n");

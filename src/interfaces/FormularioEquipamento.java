@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.Equipamento.*;
+import dados.Equipamento.Equipamento;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -39,6 +39,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
     private JTextArea areaDeSaida;
     private JButton showList;
     private JButton exitButton;
+    private JComboBox escavadeiraComboBox;
 
 
     public FormularioEquipamento(ACMEEquipamento equipamentos) {
@@ -46,7 +47,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
         setContentPane(janelaPrincipal);
         setTitle("Cadastra equipe");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
         setSize(800, 700);
         setVisible(true);
         saveButton.addActionListener(this);
@@ -59,6 +60,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
         painelEscavadeira2.setVisible(false);
         painelBarco2.setVisible(false);
         comboBox1.addItemListener( this);
+        escavadeiraComboBox.setVisible(false);
         exitButton.addActionListener(this);
         JScrollPane areaDeSaida = new JScrollPane();
         this.setResizable(false);
@@ -144,17 +146,8 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                     }
                     case "Escavadeira" -> {
-                        String combustivel = "";
+                        String combustivel = (String) escavadeiraComboBox.getSelectedItem();
                         double carga = -1;
-                        try{
-                            combustivel = escavadeiraCombustivelText.getText();
-                            if(combustivel.equals("")) {
-                                throw new InputMismatchException();
-                            }
-                        }catch (InputMismatchException i) {
-                            texto += "Erro: Combustivel nao pode ser nulo\n";
-                            verifica = false;
-                        }
 
                         try {
                             carga = Double.parseDouble(escavadeiraCargaText.getText());
@@ -184,26 +177,27 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
             new JanelaDeErro(texto);
 
         }
-            /*
-            if (e.getSource() == showList) {
-                if (acmeRescue.getLista().size() == 0) {
-                    String texto = areaDeSaida.getText();
-                    texto += "Erro: Lista vazia\n";
-                    areaDeSaida.setText(texto);
-                }
 
-
-                acmeRescue.organizaLista();
-                Equipamento aux = null;
+        if (e.getSource() == showList) {
+            if (acmeEquipamentos.getLista().size() == 0) {
                 String texto = areaDeSaida.getText();
-                for (int i = 0; i < acmeRescue.getLista().size(); i++) {
-                    aux = acmeRescue.getLista().get(i);
-                    texto += aux.toString() + "\n";
-
-                }
+                texto += "Erro: Lista vazia\n";
                 areaDeSaida.setText(texto);
             }
-            */
+
+
+            acmeEquipamentos.organizaLista();
+            Equipamento aux = null;
+            String texto = areaDeSaida.getText();
+            for (int i = 0; i < acmeEquipamentos.getLista().size(); i++) {
+                aux = acmeEquipamentos.getLista().get(i);
+                texto += aux.toString() + "\n";
+
+            }
+            areaDeSaida.setText(texto);
+
+        }
+
 
             if (e.getSource() == button1) {
                 idNametxt.setText("");
@@ -236,6 +230,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(true);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(false);
+                        escavadeiraComboBox.setVisible(false);
                     }
                     case "Barco" -> {
                         painelCaminhao.setVisible(false);
@@ -244,6 +239,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(true);
+                        escavadeiraComboBox.setVisible(false);
                     }
                     case "Escavadeira" -> {
                         painelCaminhao.setVisible(false);
@@ -251,6 +247,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelBarco.setVisible(false);
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(true);
+                        escavadeiraComboBox.setVisible(true);
                         painelBarco2.setVisible(false);
                     }
                     default -> {
@@ -260,6 +257,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(false);
+                        escavadeiraComboBox.setVisible(false);
                     }
                 }
             }
