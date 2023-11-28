@@ -11,9 +11,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VinculaEquipamento {
+public class VinculaEquipamento extends JFrame {
 
     private JLabel titulo;
+    private JPanel painel;
     private JLabel labelEquipa;
     private JTextField insereEquipamento;
     private JLabel labelEquipe;
@@ -26,6 +27,10 @@ public class VinculaEquipamento {
 
 
     public VinculaEquipamento() {
+        this.add(painel);
+        this.pack();
+        this.dispose();
+        this.setVisible(true);
         confirmaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
