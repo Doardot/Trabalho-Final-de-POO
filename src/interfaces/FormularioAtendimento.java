@@ -45,6 +45,10 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
 
         escolheEvento = new JComboBox<>();
 
+        okBot.addActionListener(this);
+        limpaBot.addActionListener(this);
+        acabaBot.addActionListener(this);
+
         this.add(painel);
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,39 +68,28 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             try {
                 formatter.parse(dataStr);
             } catch (ParseException exception) {
-                String str = textArea.getText();
-                str += "ERRO. DATA INVALIDA (dd/MM/yyyy).\n";
-                textArea.setText(str);
-                new JanelaDeErro("\"ERRO. DATA INVALIDA (dd/MM/yyyy).\\n\"");
+                new JanelaDeErro("ERRO. DATA INVALIDA (dd/MM/yyyy).");
                 return;
             }
 
             if (dataStr.equals("")) {
-                String str = textArea.getText();
-                str += "ERRO. CAMPO DE DATA VAZIO.\n";
-                textArea.setText(str);
+                new JanelaDeErro("ERRO. CAMPO DE DATA VAZIO");
                 return;
             }
 
             try {
                 codInt = Integer.parseInt(codText.getText());
                 if (codInt <= 0) {
-                    String str = textArea.getText();
-                    str += "ERRO. CÓDIGO INVÁLIDO.\n";
-                    textArea.setText(str);
+                    new JanelaDeErro("ERRO. CÓDIGO INVÁLIDO.");
                     return;
                 }
                 durInt = Integer.parseInt(duracaoText.getText());
                 if (durInt <= 0) {
-                    String str = textArea.getText();
-                    str += "ERRO. LATITUDE INVÁLIDA (entre -90 e 90).\n";
-                    textArea.setText(str);
+                    new JanelaDeErro("ERRO. LATITUDE INVÁLIDA (entre -90 e 90).");
                     return;
                 }
             } catch (NumberFormatException exception) {
-                String str = textArea.getText();
-                str += "ERRO. CAMPO VAZIO OU NÚMERO INVÁLIDO.\n";
-                textArea.setText(str);
+                new JanelaDeErro("ERRO. CAMPO VAZIO OU NÚMERO INVÁLIDO.");
                 return;
             }
 
@@ -107,23 +100,21 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
                 }
             }
 
-            String str = textArea.getText();
             if (evento == null) {
-                str = "ERRO. EVENTO NÃO EXISTE.";
-                str += evento.toString() + "\n";
-                textArea.setText(str);
+                new JanelaDeErro("\"ERRO. EVENTO NÃO EXISTE.\"");
             }
             Atendimento atendimento = new Atendimento(codInt, dataStr, durInt, null, evento, AtendimentoStatus.PEN);
             if (acmeAtendimento.cadastraAtendimento(atendimento)) {
-                str = "ATENDIMENTO ADICIONADO: ";
-                str += evento.toString() + "\n";
-                textArea.setText(str);
+                new JanelaDeErro("ATENDIMENTO ADICIONADO.");
             } else {
-                str += "ATENDIMENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE. \n";
-                textArea.setText(str);
+                new JanelaDeErro("ATENDIMENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE.");
             }
         }
-
+        if (e.getSource() == limpaBot) {
+            codText.setText("");
+            dataText.setText("");
+            duracaoText.setText("");
+        }
         if (e.getSource() == acabaBot) {
             this.dispose();
         }
