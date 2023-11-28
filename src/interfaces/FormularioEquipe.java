@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-public class FormularioEquipe {
+public class FormularioEquipe extends JFrame{
     private JPanel painel;
     private JTextField insereCod;
     private JTextField insereQuant;
@@ -34,6 +34,11 @@ public class FormularioEquipe {
     private ACMEEquipe equipesArray = new ACMEEquipe();
 
     public FormularioEquipe(ACMEEquipe equipes) {
+
+        this.add(painel);
+        this.pack();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setVisible(true);
 
         //botão para confirmar o cadastramento
         okBotao.addActionListener(new ActionListener() {
