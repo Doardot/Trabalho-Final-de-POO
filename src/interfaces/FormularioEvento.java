@@ -44,7 +44,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
     public FormularioEvento(ACMEEvento eventos) {
         this.add(painel);
         this.pack();
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
         this.setVisible(true);
         acmeEvento = new ACMEEvento();
 
@@ -162,6 +162,9 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
             textArea.setText("");
         }
 
+        else if(e.getSource() == acabaBot) {
+            this.dispose();
+        }
 
 
         /*
