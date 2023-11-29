@@ -12,6 +12,7 @@ public class Atendimento {
 	private Equipe equipe;
 	private Evento evento;
 	private AtendimentoStatus atendimentoStatus;
+	private String codigo;
 
 	public Atendimento(int cod, String dataInicio, int duracao, Equipe equipe, Evento evento, AtendimentoStatus atendimentoStatus) {
 		this.cod = cod;
@@ -33,6 +34,13 @@ public class Atendimento {
 	public AtendimentoStatus getStatus() { return atendimentoStatus; }
 	public void setStatus(AtendimentoStatus atendimentoStatus) { this.atendimentoStatus = atendimentoStatus; }
 	public void setEquipe(Equipe equipe) { this.equipe = equipe; }
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+		this.codigo = evento.getCodigo();
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public double custoAtendimento(){
 		return (custoEquipe() + equipe.custoEquipamento() + equipe.calculaCustoDeslocamento());
@@ -54,7 +62,7 @@ public class Atendimento {
 
 	}
 	public String toStringDados() {
-		return cod+";"+dataInicio+";"+duracao+";"+atendimentoStatus.getStatus()+";"+evento.getCodigo()+"\n";
+		return cod+";"+dataInicio+";"+duracao+";"+atendimentoStatus.getStatus()+";"+codigo+"\n";
 	}
 
 

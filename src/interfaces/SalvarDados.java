@@ -48,9 +48,6 @@ public class SalvarDados extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
-
-
         if (e.getSource() == cadastrarButton) {
 
             String texto = "";

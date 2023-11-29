@@ -91,9 +91,14 @@ public class LeituraDeArquivos extends JFrame implements ActionListener, ItemLis
 
                                     atendimento.cadastraAtendimento(new Atendimento(cod, dataInicio, duracao, null, eventoAux, status ));
                                 }
+                                else{
+                                    Atendimento atendimento1 = new Atendimento(cod, dataInicio, duracao, null, null, status);
+                                    atendimento1.setCodigo(codigo);
+                                    atendimento.cadastraAtendimento(atendimento1);
+                                }
                             }
 
-                            Atendimento atendimento1 = new Atendimento(cod, dataInicio, duracao, null, null, status);
+
 
 
                         }

@@ -82,7 +82,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
             LeituraDeArquivos leituraDeArquivosForm = new LeituraDeArquivos(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == salvarDados) {
-            //SalvarDados salvarDados1 = new SalvarDados(equipe, evento, atendimento, equipamento);
+            SalvarDados salvarDados1 = new SalvarDados(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == carregarDados) {
             //carregarDados();
