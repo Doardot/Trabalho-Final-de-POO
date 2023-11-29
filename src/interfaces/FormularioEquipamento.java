@@ -49,7 +49,6 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
         this.acmeEquipamentos = equipamentos;
 
         setContentPane(janelaPrincipal);
-        setTitle("Cadastra equipamento");
         this.dispose();
         setSize(800, 700);
         setVisible(true);

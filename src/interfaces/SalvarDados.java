@@ -47,7 +47,6 @@ public class SalvarDados extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == cadastrarButton) {
 
             String texto = "";
@@ -76,6 +75,7 @@ public class SalvarDados extends JFrame implements ActionListener {
                                 texto += a.toStringDados();
                             }
                         }
+                        new JanelaDeErro("Arquivos atualizados");
 
 
                     }
@@ -89,6 +89,7 @@ public class SalvarDados extends JFrame implements ActionListener {
                                 texto += equipamento.toStringDados();
                             }
                         }
+                        new JanelaDeErro("Arquivos atualizados");
                     }
 
 
@@ -100,7 +101,7 @@ public class SalvarDados extends JFrame implements ActionListener {
                                 texto += evento.toStringDados();
                             }
                         }
-
+                        new JanelaDeErro("Arquivos atualizados");
 
                     }
                     case "Equipe" -> {
@@ -112,7 +113,7 @@ public class SalvarDados extends JFrame implements ActionListener {
                                 texto += equipe.toStringDados();
                             }
                         }
-
+                        new JanelaDeErro("Arquivos atualizados");
                     }
                 }
                 System.out.println(texto);
