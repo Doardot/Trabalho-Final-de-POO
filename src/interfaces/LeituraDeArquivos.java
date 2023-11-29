@@ -47,20 +47,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
 
 
 
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -146,7 +133,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
 
             }
 
-            else if(arquivo.equals("src/EXEMPLO-EVENTOS")) {
+            else if(arquivo.equals("src/EXEMPLO-EVENTOS.csv")) {
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                     String linha;
                     while ((linha = br.readLine()) != null) {
