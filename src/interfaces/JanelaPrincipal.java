@@ -68,12 +68,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     public void cadastraAtendimento () {
     }
 
-    public void mostraRelatorioGeral () {
-    }
-
-    public void vincularEquipamentoEquipe () {
-    }
-
     public void alocarAtendimento () {
     }
 
