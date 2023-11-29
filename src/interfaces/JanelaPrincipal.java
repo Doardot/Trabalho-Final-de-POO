@@ -24,6 +24,11 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JButton relatorioGeral;
     private JButton leituraArquivo;
     private JButton vinculaEquipamento;
+    private JButton consulAtend;
+    private JButton alocarAtend;
+    private JButton alteraAtend;
+    private JButton salvarDados;
+    private JButton carregarDados;
 
 
     public JanelaPrincipal() {
@@ -39,9 +44,14 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         eventoBotao.addActionListener(this);
         equipeBotao.addActionListener(this);
         equipamentoBotao.addActionListener(this);
+        alocarAtend.addActionListener(this);
+        consulAtend.addActionListener(this);
+        alteraAtend.addActionListener(this);
         relatorioGeral.addActionListener(this);
         leituraArquivo.addActionListener(this);
         vinculaEquipamento.addActionListener(this);
+        salvarDados.addActionListener(this);
+        carregarDados.addActionListener(this);
         fecharBotao.addActionListener(this);
     }
 
@@ -61,11 +71,27 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         if(e.getSource()== vinculaEquipamento) {
             VinculaEquipamento vinculaEquipamento1 = new VinculaEquipamento(equipe, equipamento);
         }
+
+        if(e.getSource() == alocarAtend) {
+            AlocarAtendimento alocarAtendimento = new AlocarAtendimento();
+        }
+        if(e.getSource() == consulAtend) {
+            ConsultarAtendimento consultarAtendimento = new ConsultarAtendimento(atendimento);
+        }
+        if(e.getSource() == alteraAtend) {
+            //AlterarSituacaoAtendimento alterarSituacaoAtendimento = new AlterarSituacaoAtendimento(atendimento);
+        }
         if(e.getSource() == relatorioGeral) {
             RelatorioGeral relatorioGeral1 = new RelatorioGeral(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == leituraArquivo) {
             LeituraDeArquivos leituraDeArquivosForm = new LeituraDeArquivos(equipe, evento, atendimento, equipamento);
+        }
+        if(e.getSource() == salvarDados) {
+            //salvarDados();
+        }
+        if(e.getSource() == carregarDados) {
+            //carregarDados();
         }
         if(e.getSource() == fecharBotao) {
             System.exit(0);
