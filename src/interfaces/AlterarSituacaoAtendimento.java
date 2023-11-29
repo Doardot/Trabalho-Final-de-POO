@@ -7,6 +7,7 @@ import dados.Atendimento.AtendimentoStatus;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class AlterarSituacaoAtendimento extends JFrame implements ActionListener {
@@ -49,6 +50,7 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
         insereAtend.addActionListener(this);
         fecharBotao.addActionListener(this);
         botaoConfirma.addActionListener(this);
+        mostrarAtend.addActionListener(this);
 
     }
 
@@ -56,9 +58,11 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
 
 
     public void actionPerformed(ActionEvent e){
+
         if(e.getSource() == mostrarAtend) {
-            //todo
+            mostrarAtendimento();
         }
+
         if(e.getSource() == botaoConfirma) {
             String texto = "";
             String at = insereAtend.getText();
@@ -83,8 +87,6 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
                 }
             }
 
-
-
             if(!texto.isBlank()){
                 textoArea.setText(texto);
             } else {
@@ -92,13 +94,30 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
             }
         }
 
-
-        //FECHAR BOTAO
         if (e.getSource() == fecharBotao) {
             this.dispose();
         }
 
     }
 
+    public void mostrarAtendimento() {
+        ArrayList<Atendimento> listaAtendimento;
+        listaAtendimento = acmeAtendimento.getAtendimentos();
+        String texto = "";
+        boolean vazio = true;
+        if (!listaAtendimento.isEmpty()) {
+            texto += "\nAtendimentos:\n";
+            vazio = false;
+            for (Atendimento a : listaAtendimento) {
+                texto += a.toString();
+            }
+        }
+
+        if (!vazio) {
+            textoArea.setText(texto);
+        } else {
+            new JanelaDeErro("Erro: Não há nenhum dado cadastrado");
+        }
+    }
 
 }
