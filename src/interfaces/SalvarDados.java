@@ -5,20 +5,16 @@ import aplicacao.ACMEEquipamento;
 import aplicacao.ACMEEquipe;
 import aplicacao.ACMEEvento;
 import dados.Atendimento.Atendimento;
-import dados.Equipamento.Barco;
-import dados.Equipamento.CaminhaoTanque;
 import dados.Equipamento.Equipamento;
-import dados.Equipamento.Escavadeira;
 import dados.Equipe.Equipe;
-import dados.Evento.Ciclone;
 import dados.Evento.Evento;
-import dados.Evento.Seca;
-import dados.Evento.Terremoto;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -58,12 +54,11 @@ public class SalvarDados extends JFrame implements ActionListener {
         if (e.getSource() == cadastrarButton) {
 
             String texto = "";
-
-
             String seletor = (String) seletorBox.getSelectedItem();
             assert seletor != null;
-            String arquivo = textField1.getText();
-            if (!texto.isBlank()) {
+            String arquivo = "";
+            arquivo = textField1.getText();
+            if (!arquivo.isBlank()) {
                 arquivo = "src/" + arquivo + ".csv";
                 PrintStream streamSaida = null;
                 try {
