@@ -69,25 +69,30 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
 
                 if(!at.isBlank()){
                 for (Atendimento a : acmeAtendimento.getAtendimentos()) {
-                    if (a.getCod() == Integer.parseInt(at)){
-                        texto += "Atendimento: " + a;
-                        if(a.getStatus().equals(AtendimentoStatus.FIN)) {
-                            new JanelaDeErro("Erro: Atendimento já finalizado");
-                            break;
+                    try{
+                        if (a.getCod() == Integer.parseInt(at)) {
+                            texto += "Atendimento: " + a;
+                            if(a.getStatus().equals(AtendimentoStatus.FIN)) {
+                                new JanelaDeErro("Erro: Atendimento já finalizado");
+                                break;
+                            }
+
+                            if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
+                                a.setStatus(AtendimentoStatus.PEN);
+                            }
+                            if (boxSitu.getSelectedItem().equals("EX")) {
+                                a.setStatus(AtendimentoStatus.EX);
+                            }
+                            if (boxSitu.getSelectedItem().equals("CANCEL")) {
+                                a.setStatus(AtendimentoStatus.CANCEL);
+                            }
+                            if (boxSitu.getSelectedItem().equals("FIN")) {
+                                a.setStatus(AtendimentoStatus.FIN);
+                            }
+                            texto += "\nNovo status: " + a.getStatus();
                         }
-                        if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
-                            a.setStatus(AtendimentoStatus.PEN);
-                        }
-                        if (boxSitu.getSelectedItem().equals("EX")) {
-                            a.setStatus(AtendimentoStatus.EX);
-                        }
-                        if (boxSitu.getSelectedItem().equals("CANCEL")) {
-                            a.setStatus(AtendimentoStatus.CANCEL);
-                        }
-                        if (boxSitu.getSelectedItem().equals("FIN")) {
-                            a.setStatus(AtendimentoStatus.FIN);
-                        }
-                        texto += "\nNovo status: " + a.getStatus();
+                    } catch (NumberFormatException ex) {
+                        new JanelaDeErro("Erro: Insira um número válido");
                     }
                 }
             }
