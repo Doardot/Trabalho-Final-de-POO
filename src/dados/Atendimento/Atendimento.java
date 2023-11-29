@@ -30,6 +30,9 @@ public class Atendimento {
 	}
 	public Equipe getEquipe() { return equipe; }
 	public Evento getEvento() { return evento; }
+	public AtendimentoStatus getStatus() { return atendimentoStatus; }
+	public void setStatus(AtendimentoStatus atendimentoStatus) { this.atendimentoStatus = atendimentoStatus; }
+	public void setEquipe(Equipe equipe) { this.equipe = equipe; }
 
 	public double calculaCusto() {
 		double custo = 0.0;

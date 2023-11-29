@@ -63,7 +63,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
             FormularioEvento formEvento = new FormularioEvento(evento);
         }
         if(e.getSource() == equipeBotao) {
-            FormularioEquipe formEquipe = new FormularioEquipe(equipe);
+            FormularioEquipe formEquipe = new FormularioEquipe(equipe, atendimento);
         }
         if(e.getSource() == equipamentoBotao) {
             FormularioEquipamento formEquipamento = new FormularioEquipamento(equipamento);

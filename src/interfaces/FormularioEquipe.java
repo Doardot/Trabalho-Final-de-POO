@@ -1,7 +1,6 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.Equipamento.Equipamento;
 import dados.Equipe.*;
 
 import javax.swing.*;
@@ -31,11 +30,13 @@ public class FormularioEquipe extends JFrame implements ActionListener {
         return painel;
     }
 
-    private ACMEEquipe equipesArray = new ACMEEquipe();
+    private ACMEEquipe acmeEquipe;
+    private ACMEAtendimento acmeAtendimento;
 
-    public FormularioEquipe(ACMEEquipe equipes) {
+    public FormularioEquipe(ACMEEquipe equipes, ACMEAtendimento atendimento) {
         this.add(painel);
-        this.equipesArray = equipes;
+        this.acmeEquipe = equipes;
+        this.acmeAtendimento = atendimento;
         this.setSize(1200, 800);
         this.dispose();
         this.setVisible(true);
@@ -100,8 +101,10 @@ public class FormularioEquipe extends JFrame implements ActionListener {
                 }
 
                 if (cadastra) {
-                    if (equipesArray.addEquipe(new Equipe(cod, quant, lat, longi, null))) {
-                        campoTexto.append("Equipe cadastrada com sucesso!" + "\n" + equipesArray.getEquipes().get(equipesArray.getEquipes().size() - 1).toString() + "\n");
+                    Equipe equipe = new Equipe(cod, quant, lat, longi, null);
+                    if (acmeEquipe.addEquipe(equipe)) {
+                        campoTexto.append("Equipe cadastrada com sucesso!" + "\n" + acmeEquipe.getEquipes().get(acmeEquipe.getEquipes().size() - 1).toString() + "\n");
+                        acmeAtendimento.alocaEquipe(acmeEquipe.getEquipes());
                     } else {
                         campoTexto.append("\n" + "Equipe já cadastrada!" + "\n");
                     }
@@ -113,11 +116,11 @@ public class FormularioEquipe extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == dadosBotao) {
-            if (equipesArray.getEquipes().isEmpty()) {
+            if (acmeEquipe.getEquipes().isEmpty()) {
                 campoTexto.append("\n" + "Não há equipes cadastradas!" + "\n");
             } else {
                 campoTexto.append("\n" + "Equipes cadastradas: " + "\n");
-                for (Equipe e1 : equipesArray.getEquipes()) {
+                for (Equipe e1 : acmeEquipe.getEquipes()) {
                     campoTexto.append(e1.toString() + "\n");
                 }
             }
