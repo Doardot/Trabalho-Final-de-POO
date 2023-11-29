@@ -43,7 +43,6 @@ public class FormularioEquipe extends JFrame implements ActionListener {
 
         this.add(painel);
         painel.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         okBotao.addActionListener(this);

@@ -96,10 +96,10 @@
         </constraints>
         <properties>
           <model>
-            <item value="PEN"/>
-            <item value="EX"/>
-            <item value="FIN"/>
-            <item value="CANCEL"/>
+            <item value="PENDENTE"/>
+            <item value="EXECUTANDO"/>
+            <item value="FINALIZADO"/>
+            <item value="CANCELADO"/>
           </model>
         </properties>
       </component>

@@ -77,19 +77,19 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
                                 break;
                             }
 
-                            if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
+                            if (Objects.equals(boxSitu.getSelectedItem(), "PENDENTE")) {
                                 a.setStatus(AtendimentoStatus.PEN);
                             }
-                            if (boxSitu.getSelectedItem().equals("EX")) {
+                            if (boxSitu.getSelectedItem().equals("EXECUTANDO")) {
                                 a.setStatus(AtendimentoStatus.EX);
                             }
-                            if (boxSitu.getSelectedItem().equals("CANCEL")) {
+                            if (boxSitu.getSelectedItem().equals("CANCELADO")) {
                                 a.setStatus(AtendimentoStatus.CANCEL);
                             }
-                            if (boxSitu.getSelectedItem().equals("FIN")) {
+                            if (boxSitu.getSelectedItem().equals("FINALIZADO")) {
                                 a.setStatus(AtendimentoStatus.FIN);
                             }
-                            texto += "\nNovo status: " + a.getStatus();
+                            texto += "\nNovo status: " + a.getStatus() + "\n";
                         }
                     } catch (NumberFormatException ex) {
                         new JanelaDeErro("Erro: Insira um número válido");
@@ -120,7 +120,7 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
             texto += "\nAtendimentos:\n";
             vazio = false;
             for (Atendimento a : listaAtendimento) {
-                texto += a.toString();
+                texto += "\n" + a.toString() + "\n";
             }
         }
 
