@@ -1,5 +1,11 @@
-1;01/01/2020;2;CANCELADO;null
-3333;04/11/2023;12;PENDENTE;3
-1111;05/09/2023;31;PENDENTE;1
-2222;17/10/2023;14;PENDENTE;2
+1;a;1000.0;null;2;1000.0
+110;ShipOne;110.0;Bravo;1;11
+220;TruckOne;120.0;Foxtrot;2;15.5
+330;BulldozerOne;130.0;Alfa;3;DIESEL;1.4
+440;BulldozerTwo;140.0;Delta;3;GASOLINA;2.3
+550;TruckTwo;150.0;Charlie;2;33.3
+660;ShipTwo;160.0;Alfa;1;5
+770;BulldozerThree;170.0;Echo;3;DIESEL;1.7
+880;TruckThree;180.0;Golf;2;12.2
+990;ShipThree;190.0;Golf;1;9
 

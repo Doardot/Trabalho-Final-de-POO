@@ -10,8 +10,6 @@ public class ACMEEvento {
     public ACMEEvento() {
         eventos = new ArrayList<>();
 
-        //evento de teste
-        cadastraEvento(new Ciclone("a", "a", 10, 20, 20, 20));
     }
 
     public boolean cadastraEvento(Evento evento) {
