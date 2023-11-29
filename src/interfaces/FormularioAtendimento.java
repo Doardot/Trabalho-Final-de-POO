@@ -100,6 +100,7 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
 
             if (evento == null) {
                 new JanelaDeErro("ERRO. EVENTO NÃO EXISTE.");
+                return;
             }
             Atendimento atendimento = new Atendimento(codInt, dataStr, durInt, null, evento, AtendimentoStatus.PEN);
             if (acmeAtendimento.cadastraAtendimento(atendimento)) {

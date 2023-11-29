@@ -41,7 +41,7 @@ public class ACMEAtendimento {
                 }
                 e.setAtendimento(null);
             }
-            if (a.getEquipe().getEstaAlocada()) {
+            if (! a.getEquipe().getEstaAlocada()) {
                 a.setStatus(AtendimentoStatus.CANCEL);
                 return false;
             }
