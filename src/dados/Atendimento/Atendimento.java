@@ -1,5 +1,6 @@
 package dados.Atendimento;
 
+import aplicacao.ACMEEquipe;
 import dados.Equipamento.Equipamento;
 import dados.Equipe.Equipe;
 import dados.Evento.Evento;
@@ -27,6 +28,8 @@ public class Atendimento {
 	public int getDuracao() {
 		return duracao;
 	}
+	public Equipe getEquipe() { return equipe; }
+	public Evento getEvento() { return evento; }
 
 	public double calculaCusto() {
 		double custo = 0.0;
@@ -34,21 +37,13 @@ public class Atendimento {
 	}
 
 	public double custoAtendimento(){
-		return (custoEquipe() + custoEquipamento() + custoDeslocamento());
+		return (custoEquipe() + equipe.custoEquipamento() + equipe.calculaCustoDeslocamento());
 	}
 
 	public double custoEquipe(){
 		return (equipe.getQuantidade() * 250 * getDuracao());
 	}
 
-	public double custoEquipamento() {
-		double custo = 0.0;
-		for (Equipamento e : equipe.getEquipamentos()) {
-			custo += e.getCustoDia();
-		}
-		custo = custo * duracao;
-		return custo;
-	}
 	public Double custoDeslocamento(){
 		double custo = 0.0;
 		return custo;
