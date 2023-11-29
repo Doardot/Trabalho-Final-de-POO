@@ -23,6 +23,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JLabel tituloTrab;
     private JButton relatorioGeral;
     private JButton leituraArquivo;
+    private JButton vinculaEquipamento;
+
 
     public JanelaPrincipal() {
         equipe = new ACMEEquipe();
@@ -39,22 +41,25 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         equipamentoBotao.addActionListener(this);
         relatorioGeral.addActionListener(this);
         leituraArquivo.addActionListener(this);
+        vinculaEquipamento.addActionListener(this);
         fecharBotao.addActionListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == atendimentoBotao) {
-            // adicionar formulario de atendimento
+            FormularioAtendimento formAtendimento = new FormularioAtendimento(atendimento, equipe, evento);
         }
         if(e.getSource() == eventoBotao) {
             FormularioEvento formEvento = new FormularioEvento(evento);
         }
         if(e.getSource() == equipeBotao) {
-
             FormularioEquipe formEquipe = new FormularioEquipe(equipe);
         }
         if(e.getSource() == equipamentoBotao) {
             FormularioEquipamento formEquipamento = new FormularioEquipamento(equipamento);
+        }
+        if(e.getSource()== vinculaEquipamento) {
+            VinculaEquipamento vinculaEquipamento1 = new VinculaEquipamento(equipe, equipamento);
         }
         if(e.getSource() == relatorioGeral) {
             RelatorioGeral relatorioGeral1 = new RelatorioGeral(equipe, evento, atendimento, equipamento);
@@ -65,17 +70,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         if(e.getSource() == fecharBotao) {
             System.exit(0);
         }
-
-
-
     }
     public void cadastraAtendimento () {
-    }
-
-    public void mostraRelatorioGeral () {
-    }
-
-    public void vincularEquipamentoEquipe () {
     }
 
     public void alocarAtendimento () {

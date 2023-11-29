@@ -120,7 +120,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
                         double latitude = Double.parseDouble(dados[2]);
                         double longitude = Double.parseDouble(dados[3]);
                         int tipo = Integer.parseInt(dados[4]);
-                        new Equipe(codinome, quantidade, latitude, longitude);
+                        new Equipe(codinome, quantidade, latitude, longitude, null);
 
                     }
                     new JanelaDeErro("Cadastrado com sucesso");
