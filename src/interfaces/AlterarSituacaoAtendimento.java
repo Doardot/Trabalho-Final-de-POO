@@ -2,10 +2,12 @@ package interfaces;
 
 import aplicacao.ACMEAtendimento;
 import dados.Atendimento.Atendimento;
+import dados.Atendimento.AtendimentoStatus;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class AlterarSituacaoAtendimento extends JFrame implements ActionListener {
 
@@ -23,6 +25,7 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
     private JTextField insereAtendNovo;
     private JLabel atendNovoTitulo;
     private JButton mostrarAtend;
+    private JComboBox boxSitu;
 
     public AlterarSituacaoAtendimento(ACMEAtendimento atendimento) {
         this.acmeAtendimento = atendimento;
@@ -59,13 +62,27 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
         if(e.getSource() == botaoConfirma) {
             String texto = "";
             String at = insereAtend.getText();
-            String atNovo = insereAtendNovo.getText();
+
 
             for(Atendimento a : acmeAtendimento.getAtendimentos()) {
                 if(a.getCod() == Integer.parseInt(at)) {
                     texto += "Atendimento: " + a;
+                    if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
+                        a.setStatus(AtendimentoStatus.PEN);
+                    }
+                    if(boxSitu.getSelectedItem().equals("EX")) {
+                        a.setStatus(AtendimentoStatus.EX);
+                    }
+                    if (boxSitu.getSelectedItem().equals("CANCEL")) {
+                        a.setStatus(AtendimentoStatus.CANCEL);
+                    }
+                    if (boxSitu.getSelectedItem().equals("FIN")) {
+                        a.setStatus(AtendimentoStatus.FIN);
+                    }
+                    texto += "\nNovo status: " + a.getStatus();
                 }
             }
+
 
 
             if(!texto.isBlank()){

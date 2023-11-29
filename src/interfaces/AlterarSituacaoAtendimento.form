@@ -69,20 +69,12 @@
           <editable value="false"/>
         </properties>
       </component>
-      <component id="38415" class="javax.swing.JTextField" binding="insereAtendNovo">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
       <component id="a8e01" class="javax.swing.JLabel" binding="atendNovoTitulo">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Novo atendimento:"/>
+          <text value="Novo situação:"/>
         </properties>
       </component>
       <vspacer id="b8a9a">
@@ -96,6 +88,19 @@
         </constraints>
         <properties>
           <text value="Mostrar atendimentos"/>
+        </properties>
+      </component>
+      <component id="62f1c" class="javax.swing.JComboBox" binding="boxSitu">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="PEN"/>
+            <item value="EXECUTANDO"/>
+            <item value="FINALIZADO"/>
+            <item value="CANCELADO"/>
+          </model>
         </properties>
       </component>
     </children>
