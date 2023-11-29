@@ -12,8 +12,9 @@ public class ACMEAtendimento {
 
     public ACMEAtendimento() {
         atendimentos = new ArrayList<>();
-    }
+        atendimentos.add(new Atendimento(1, "01/01/2020", 2, null, null, AtendimentoStatus.PEN));
 
+    }
     public ArrayList<Atendimento> getAtendimentos() {
         return atendimentos;
     }

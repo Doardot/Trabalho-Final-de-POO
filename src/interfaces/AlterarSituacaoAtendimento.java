@@ -2,10 +2,13 @@ package interfaces;
 
 import aplicacao.ACMEAtendimento;
 import dados.Atendimento.Atendimento;
+import dados.Equipamento.Equipamento;
+import dados.Equipe.Equipe;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AlterarSituacaoAtendimento extends JFrame implements ActionListener {
 
@@ -16,12 +19,11 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
     private JButton fecharBotao;
     private JTextField tituloAtend;
 
-    private JTextArea textoArea;
+    private JTextPane textoArea;
     private JLabel atendTitulo;
     private JTextField insereAtend;
     private JButton botaoConfirma;
 
-    //A FAZER
     public AlterarSituacaoAtendimento(ACMEAtendimento atendimento) {
         this.acmeAtendimento = atendimento;
 
@@ -32,61 +34,80 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
 
         painel.setVisible(true);
         atendTitulo.setVisible(true);
+        insereAtend.setVisible(true);
+        botaoConfirma.setVisible(true);
+        textoArea.setVisible(true);
+        alteraSitu.setVisible(true);
+        fecharBotao.setVisible(true);
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         insereAtend.addActionListener(this);
         fecharBotao.addActionListener(this);
+        botaoConfirma.addActionListener(this);
 
-        //mostrarAtendimento();
+        mostrarAtendimento();
     }
 
     public JPanel getPainel() { return painel; }
 
 
     public void actionPerformed(ActionEvent e){
-
         if(e.getSource() == botaoConfirma) {
+            String texto = "";
             String at = insereAtend.getText();
 
             for(Atendimento a : acmeAtendimento.getAtendimentos()) {
                 if(a.getCod() == Integer.parseInt(at)) {
-                    textoArea.append("Atendimento: " + a.getCod() + "\n");
-                    mostrarAtendimento();
+                    texto += "Atendimento: " + a.getCod() + "\n";
                 }
             }
 
-
+            if(atendimento != null) {
+                textoArea.setText(texto);
+            } else {
+                new JanelaDeErro("Erro: Atendimento não encontrado");
+            }
         }
 
 
-
-
+        //FECHAR BOTAO
         if (e.getSource() == fecharBotao) {
             this.dispose();
         }
 
     }
 
+
     public void mostrarAtendimento() {
-        /*String texto = "";
-        boolean vazio = true;*/
+        String texto = "";
+        boolean vazio = true;
         if (!acmeAtendimento.getAtendimentos().isEmpty()) {
-            //vazio = false;
+            vazio = false;
             for (Atendimento a : acmeAtendimento.getAtendimentos()) {
                 if(a.getEquipe() != null) {
-                    textoArea.append("Equipe alocada: " + a.getEquipe().toString() + "\n");
+                    texto += "Atendimento: " + a.getCod() + "\n";
+                    //texto += "Equipe: " + a.getEquipe().getNome() + "\n";
+                    //texto += "Evento: " + a.getEvento().getNome() + "\n";
+                    texto += "Status: " + a.getStatus() + "\n";
+                    texto += "-----------------------------------\n";
                 }
-                textoArea.append(a + "\n");
-            }
-        }
 
-        /*if (!vazio) {
-            areaTexto.setText(texto);*/
-        else {
+            }
+
+        }
+        if(vazio) {
+            texto = "Não há nenhum atendimento cadastrado";
+            textoArea.setText(texto);
+        }
+        if(!vazio) {
+            textoArea.setText(texto);
+
+        } else {
             new JanelaDeErro("Erro: Não há nenhum atendimento cadastrado");
         }
-    }
 
+    }
 
 }
