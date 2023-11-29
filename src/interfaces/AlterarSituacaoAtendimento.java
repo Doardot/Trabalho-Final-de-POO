@@ -2,13 +2,10 @@ package interfaces;
 
 import aplicacao.ACMEAtendimento;
 import dados.Atendimento.Atendimento;
-import dados.Equipamento.Equipamento;
-import dados.Equipe.Equipe;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class AlterarSituacaoAtendimento extends JFrame implements ActionListener {
 
@@ -23,6 +20,9 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
     private JLabel atendTitulo;
     private JTextField insereAtend;
     private JButton botaoConfirma;
+    private JTextField insereAtendNovo;
+    private JLabel atendNovoTitulo;
+    private JButton mostrarAtend;
 
     public AlterarSituacaoAtendimento(ACMEAtendimento atendimento) {
         this.acmeAtendimento = atendimento;
@@ -47,24 +47,28 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
         fecharBotao.addActionListener(this);
         botaoConfirma.addActionListener(this);
 
-        mostrarAtendimento();
     }
 
     public JPanel getPainel() { return painel; }
 
 
     public void actionPerformed(ActionEvent e){
+        if(e.getSource() == mostrarAtend) {
+            //todo
+        }
         if(e.getSource() == botaoConfirma) {
             String texto = "";
             String at = insereAtend.getText();
+            String atNovo = insereAtendNovo.getText();
 
             for(Atendimento a : acmeAtendimento.getAtendimentos()) {
                 if(a.getCod() == Integer.parseInt(at)) {
-                    texto += "Atendimento: " + a.getCod() + "\n";
+                    texto += "Atendimento: " + a;
                 }
             }
 
-            if(atendimento != null) {
+
+            if(!texto.isBlank()){
                 textoArea.setText(texto);
             } else {
                 new JanelaDeErro("Erro: Atendimento não encontrado");
@@ -79,35 +83,5 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
 
     }
 
-
-    public void mostrarAtendimento() {
-        String texto = "";
-        boolean vazio = true;
-        if (!acmeAtendimento.getAtendimentos().isEmpty()) {
-            vazio = false;
-            for (Atendimento a : acmeAtendimento.getAtendimentos()) {
-                if(a.getEquipe() != null) {
-                    texto += "Atendimento: " + a.getCod() + "\n";
-                    //texto += "Equipe: " + a.getEquipe().getNome() + "\n";
-                    //texto += "Evento: " + a.getEvento().getNome() + "\n";
-                    texto += "Status: " + a.getStatus() + "\n";
-                    texto += "-----------------------------------\n";
-                }
-
-            }
-
-        }
-        if(vazio) {
-            texto = "Não há nenhum atendimento cadastrado";
-            textoArea.setText(texto);
-        }
-        if(!vazio) {
-            textoArea.setText(texto);
-
-        } else {
-            new JanelaDeErro("Erro: Não há nenhum atendimento cadastrado");
-        }
-
-    }
 
 }
