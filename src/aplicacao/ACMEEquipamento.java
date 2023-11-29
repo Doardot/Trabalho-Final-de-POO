@@ -13,6 +13,9 @@ public class ACMEEquipamento {
 
     public ACMEEquipamento() {
         equipamento = new ArrayList<>();
+
+        //equipamento teste
+        adicionaEquipamento(new CaminhaoTanque(1, "a", 1000, 1000));
     }
     public void organizaLista() {
         if(equipamento.size() == 0) {

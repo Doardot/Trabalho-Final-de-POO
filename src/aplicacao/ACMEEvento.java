@@ -9,6 +9,9 @@ public class ACMEEvento {
     private ArrayList<Evento> eventos;
     public ACMEEvento() {
         eventos = new ArrayList<>();
+
+        //evento de teste
+        cadastraEvento(new Evento("a", "a", 10, 20));
     }
 
     public boolean cadastraEvento(Evento evento) {
