@@ -13,7 +13,7 @@ public class ConsultarAtendimento extends JFrame implements ActionListener {
     private ACMEAtendimento acmeAtendimento;
     private JLabel titulo;
     private JPanel painel;
-    private JTextPane areaTexto;
+    private JTextArea areaTexto;
     private JButton fecharBotao;
 
     public ConsultarAtendimento(ACMEAtendimento acmeAtendimento) {
@@ -37,23 +37,21 @@ public class ConsultarAtendimento extends JFrame implements ActionListener {
     public JPanel getPainel() { return painel; }
 
     public void mostrarAtendimento() {
-        String texto = "";
-        boolean vazio = true;
+        /*String texto = "";
+        boolean vazio = true;*/
         if (!acmeAtendimento.getAtendimentos().isEmpty()) {
-            texto += "\nAtendimentos:\n";
-            vazio = false;
+            //vazio = false;
             for (Atendimento a : acmeAtendimento.getAtendimentos()) {
                 if(a.getEquipe() != null) {
-                    texto += a.toString();
+                    areaTexto.append("Equipe alocada: " + a.getEquipe().toString() + "\n");
                 }
-                texto += a.toString();
+                areaTexto.append(a + "\n");
             }
         }
 
-
-        if (!vazio) {
-            areaTexto.setText(texto);
-        } else {
+        /*if (!vazio) {
+            areaTexto.setText(texto);*/
+        else {
             new JanelaDeErro("Erro: Não há nenhum atendimento cadastrado");
         }
     }

@@ -34,11 +34,6 @@ public class Atendimento {
 	public void setStatus(AtendimentoStatus atendimentoStatus) { this.atendimentoStatus = atendimentoStatus; }
 	public void setEquipe(Equipe equipe) { this.equipe = equipe; }
 
-	public double calculaCusto() {
-		double custo = 0.0;
-		return custo;
-	}
-
 	public double custoAtendimento(){
 		return (custoEquipe() + equipe.custoEquipamento() + equipe.calculaCustoDeslocamento());
 	}
@@ -47,9 +42,18 @@ public class Atendimento {
 		return (equipe.getQuantidade() * 250 * getDuracao());
 	}
 
-	public Double custoDeslocamento(){
+	public Double custoDeslocamento() {
 		double custo = 0.0;
 		return custo;
+	}
+
+	public String toString() {
+		//implementar toString
+		return "Código: " + cod +
+				"\nData de Início: " + dataInicio +
+				"\nDuração: " + duracao + "\nEquipe: " + equipe +
+				"\nEvento: " + evento + "\nStatus: " + atendimentoStatus;
+
 	}
 
 }

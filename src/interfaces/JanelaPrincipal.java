@@ -79,7 +79,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
             ConsultarAtendimento consultarAtendimento = new ConsultarAtendimento(atendimento);
         }
         if(e.getSource() == alteraAtend) {
-            //AlterarSituacaoAtendimento alterarSituacaoAtendimento = new AlterarSituacaoAtendimento(atendimento);
+            AlterarSituacaoAtendimento aSA = new AlterarSituacaoAtendimento(atendimento);
         }
         if(e.getSource() == relatorioGeral) {
             RelatorioGeral relatorioGeral1 = new RelatorioGeral(equipe, evento, atendimento, equipamento);

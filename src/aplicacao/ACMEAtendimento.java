@@ -25,7 +25,7 @@ public class ACMEAtendimento {
             }
         }
         atendimentos.add(atendimento);
-        alocaEquipe();
+        alocaEquipe(null);
         return true;
     }
 
