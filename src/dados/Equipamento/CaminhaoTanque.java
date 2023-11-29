@@ -13,6 +13,6 @@ public class CaminhaoTanque extends Equipamento {
 
 	@Override
 	public String toString() {
-		return super.toString() + ", Capacidade: " + capacidade;
+		return super.toString() + ", Capacidade: " + capacidade+"\n";
 	}
 }
