@@ -42,6 +42,8 @@ public class SalvarDados extends JFrame implements ActionListener {
         this.setSize(450, 200);
         this.setVisible(true);
         cadastrarButton.addActionListener(this);
+
+        this.setLocationRelativeTo(null);
     }
 
 

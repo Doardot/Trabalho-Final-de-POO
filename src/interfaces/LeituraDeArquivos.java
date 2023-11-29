@@ -50,7 +50,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener, ItemLis
         button1.addActionListener(this);
         seletorBox.addItemListener(this);
 
-
+        this.setLocationRelativeTo(null);
     }
 
 

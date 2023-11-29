@@ -26,12 +26,13 @@ public class ConsultarAtendimento extends JFrame implements ActionListener {
 
         this.add(painel);
         painel.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         fecharBotao.addActionListener(this);
 
         mostrarAtendimento();
+
+        this.setLocationRelativeTo(null);
     }
 
     public JPanel getPainel() { return painel; }

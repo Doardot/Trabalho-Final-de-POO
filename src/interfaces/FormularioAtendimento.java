@@ -49,6 +49,8 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
         this.add(painel);
         this.pack();
         this.setVisible(true);
+
+        this.setLocationRelativeTo(null);
     }
 
 

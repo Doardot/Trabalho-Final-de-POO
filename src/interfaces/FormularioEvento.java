@@ -59,6 +59,8 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         limpaBot.addActionListener(this);
         acabaBot.addActionListener(this);
         comboBox.addItemListener(this);
+
+        this.setLocationRelativeTo(null);
     }
 
 

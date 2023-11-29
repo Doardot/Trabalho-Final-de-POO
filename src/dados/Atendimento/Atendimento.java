@@ -50,10 +50,6 @@ public class Atendimento {
 		return (equipe.getQuantidade() * 250 * getDuracao());
 	}
 
-	public Double custoDeslocamento() {
-		double custo = 0.0;
-		return custo;
-	}
 
 	public String toString() {
 		//implementar toString

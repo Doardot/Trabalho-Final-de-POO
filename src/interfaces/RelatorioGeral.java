@@ -36,6 +36,8 @@ public class RelatorioGeral extends JFrame implements ActionListener {
         this.setSize(800, 700);
         this.setVisible(true);
         fecharBotao.addActionListener(this);
+
+        this.setLocationRelativeTo(null);
     }
 
     public void mostrarRelatorio() {

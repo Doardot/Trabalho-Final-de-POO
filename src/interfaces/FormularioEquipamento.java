@@ -66,6 +66,8 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
         exitButton.addActionListener(this);
         JScrollPane areaDeSaida = new JScrollPane();
         this.setResizable(false);
+
+        this.setLocationRelativeTo(null);
     }
 
     @Override

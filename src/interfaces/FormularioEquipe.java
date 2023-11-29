@@ -58,6 +58,8 @@ public class FormularioEquipe extends JFrame implements ActionListener {
         });
 
         fecharBotao.addActionListener(this);
+
+        this.setLocationRelativeTo(null);
     }
 
 

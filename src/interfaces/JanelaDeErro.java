@@ -20,6 +20,8 @@ public class JanelaDeErro extends JFrame implements ActionListener {
         campoDeTexto.setOpaque(false);
         campoDeTexto.setText(erro);
 
+        this.setLocationRelativeTo(null);
+
     }
 
     @Override

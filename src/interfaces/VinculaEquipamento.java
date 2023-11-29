@@ -41,13 +41,14 @@ public class VinculaEquipamento extends JFrame implements ActionListener {
 
         this.add(painel);
         painel.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         confirmaButton.addActionListener(this);
         botaoFecha.addActionListener(this);
 
         mostrarEquipamentoEEquipe();
+
+        this.setLocationRelativeTo(null);
     }
 
     public JPanel getPainel() {

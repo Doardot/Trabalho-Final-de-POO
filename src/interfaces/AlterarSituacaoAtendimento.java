@@ -44,13 +44,14 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
         alteraSitu.setVisible(true);
         fecharBotao.setVisible(true);
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
         insereAtend.addActionListener(this);
         fecharBotao.addActionListener(this);
         botaoConfirma.addActionListener(this);
         mostrarAtend.addActionListener(this);
+
+        this.setLocationRelativeTo(null);
 
     }
 
