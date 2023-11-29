@@ -113,7 +113,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
                 }
                 else if (comboBox.getSelectedItem().toString() .equals ("Terremoto")) {
                     double magDbl = Double.parseDouble(magText.getText());
-                    if (magDbl < 0) {
+                    if (magDbl < 0 || magDbl > 10) {
                         String str = textArea.getText();
                         str += "ERRO. NUMERO INVÁLIDO.\n";
                         textArea.setText(str);

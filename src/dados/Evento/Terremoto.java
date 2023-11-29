@@ -11,6 +11,6 @@ public class Terremoto extends Evento {
 
 	@Override
 	public String toString() {
-		return "Ciclone (" + super.toString() + ", magnetude: " + magnitude + ");";
+		return "Terremoto (" + super.toString() + ", magnetude: " + magnitude + ");";
 	}
 }

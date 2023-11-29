@@ -103,6 +103,10 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             Atendimento atendimento = new Atendimento(codInt, dataStr, durInt, null, evento, AtendimentoStatus.PEN);
             if (acmeAtendimento.cadastraAtendimento(atendimento)) {
                 new JanelaDeErro("ATENDIMENTO ADICIONADO.");
+                evento.setEstaDisponivel(false);
+                acmeAtendimento.alocaEquipe(acmeEquipe.getEquipes());
+                this.dispose();
+                FormularioAtendimento formAtendimento = new FormularioAtendimento(acmeAtendimento, acmeEquipe, acmeEvento);
             } else {
                 new JanelaDeErro("ATENDIMENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE.");
             }
@@ -123,7 +127,9 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             String[] opcoesComboBox = new String[eventos.size()];
 
             for (int i = 0; i < eventos.size(); i++) {
-                opcoesComboBox[i] = eventos.get(i).toString();
+                if (eventos.get(i).getEstaDisponivel()) {
+                    opcoesComboBox[i] = eventos.get(i).toString();
+                }
             }
             escolheEvento = new JComboBox<>(opcoesComboBox);
         } catch (NullPointerException e) {

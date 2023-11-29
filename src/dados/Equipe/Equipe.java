@@ -14,6 +14,7 @@ public class Equipe {
 	private ArrayList<Equipamento> equipamentos;
 	private Equipe equipe;
 	private Atendimento atendimento;
+	private boolean	estaAlocada;
 
 	public Equipe(String codinome, int quantidade, double latitude, double longitude, Equipamento equipamento){
 		this.codinome = codinome;
@@ -21,6 +22,7 @@ public class Equipe {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.equipamento = equipamento;
+		estaAlocada = false;
 	}
 
 	public String getCodinome() { return codinome; }
@@ -44,10 +46,17 @@ public class Equipe {
 	public ArrayList<Equipamento> getEquipamentos() {
 		return equipamentos;
 	}
-
+	public boolean getEstaAlocada() { return estaAlocada; }
+	public void setEstaAlocada(boolean flag) { estaAlocada = flag; }
 	public String toString() {
 		return "Codinome: " + codinome + " Quantidade de membros: " + quantidade
 				+ " Latitude: " + latitude + " Longitude: " + longitude+"\n";
+	}
+	public void setAtendimento(Atendimento a) {
+		atendimento = a;
+	}
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
 	public double getDistancia() {

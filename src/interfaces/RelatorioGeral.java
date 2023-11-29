@@ -46,7 +46,7 @@ public class RelatorioGeral extends JFrame implements ActionListener {
             texto += "\nAtendimentos:\n";
             vazio = false;
             for (Atendimento a : listaAtendimento) {
-                texto += a.toString();
+                texto += a.toString() + "\n";
             }
         }
 
@@ -62,9 +62,8 @@ public class RelatorioGeral extends JFrame implements ActionListener {
 
         ArrayList<Equipe> listaEquipe;
         listaEquipe = equipe.getEquipes();
-
         if (!listaEquipe.isEmpty()) {
-            texto += "\nEquipes:\n";
+            texto += "\nEquipes: \n";
             vazio = false;
             for (Equipe equipe : listaEquipe) {
                 texto += equipe.toString();
@@ -75,7 +74,7 @@ public class RelatorioGeral extends JFrame implements ActionListener {
         listaEquipamento = equipamento.getLista();
 
         if (!listaEquipamento.isEmpty()) {
-            texto += "\nEquipamentos:\n";
+            texto += "\nEquipamentos: \n";
             vazio = false;
             for (Equipamento equipamento : listaEquipamento) {
                 texto += equipamento.toString();

@@ -1,6 +1,6 @@
 package aplicacao;
 
-import dados.Evento.Evento;
+import dados.Evento.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,7 +11,7 @@ public class ACMEEvento {
         eventos = new ArrayList<>();
 
         //evento de teste
-        cadastraEvento(new Evento("a", "a", 10, 20));
+        cadastraEvento(new Ciclone("a", "a", 10, 20, 20, 20));
     }
 
     public boolean cadastraEvento(Evento evento) {
