@@ -67,31 +67,33 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
             String texto = "";
             String at = insereAtend.getText();
 
-
-            for(Atendimento a : acmeAtendimento.getAtendimentos()) {
-                if(a.getCod() == Integer.parseInt(at)) {
-                    texto += "Atendimento: " + a;
-                    if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
-                        a.setStatus(AtendimentoStatus.PEN);
+                if(!at.isBlank()){
+                for (Atendimento a : acmeAtendimento.getAtendimentos()) {
+                    if (a.getCod() == Integer.parseInt(at)){
+                        texto += "Atendimento: " + a;
+                        if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
+                            a.setStatus(AtendimentoStatus.PEN);
+                        }
+                        if (boxSitu.getSelectedItem().equals("EX")) {
+                            a.setStatus(AtendimentoStatus.EX);
+                        }
+                        if (boxSitu.getSelectedItem().equals("CANCEL")) {
+                            a.setStatus(AtendimentoStatus.CANCEL);
+                        }
+                        if (boxSitu.getSelectedItem().equals("FIN")) {
+                            a.setStatus(AtendimentoStatus.FIN);
+                        }
+                        texto += "\nNovo status: " + a.getStatus();
                     }
-                    if(boxSitu.getSelectedItem().equals("EX")) {
-                        a.setStatus(AtendimentoStatus.EX);
-                    }
-                    if (boxSitu.getSelectedItem().equals("CANCEL")) {
-                        a.setStatus(AtendimentoStatus.CANCEL);
-                    }
-                    if (boxSitu.getSelectedItem().equals("FIN")) {
-                        a.setStatus(AtendimentoStatus.FIN);
-                    }
-                    texto += "\nNovo status: " + a.getStatus();
                 }
             }
 
-            if(!texto.isBlank()){
-                textoArea.setText(texto);
-            } else {
-                new JanelaDeErro("Erro: Atendimento não encontrado");
-            }
+                if (!texto.isBlank()) {
+                    textoArea.setText(texto);
+                } else {
+                    new JanelaDeErro("Erro: Atendimento não encontrado");
+                }
+
         }
 
         if (e.getSource() == fecharBotao) {

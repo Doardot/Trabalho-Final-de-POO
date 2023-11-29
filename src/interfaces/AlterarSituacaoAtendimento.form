@@ -97,9 +97,9 @@
         <properties>
           <model>
             <item value="PEN"/>
-            <item value="EXECUTANDO"/>
-            <item value="FINALIZADO"/>
-            <item value="CANCELADO"/>
+            <item value="EX"/>
+            <item value="FIN"/>
+            <item value="CANCEL"/>
           </model>
         </properties>
       </component>
