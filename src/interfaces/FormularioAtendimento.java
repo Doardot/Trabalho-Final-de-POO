@@ -91,9 +91,9 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             }
 
             Evento evento = null;
-            for (Evento ev : acmeEvento.getEventos()) {
-                if (ev.toString().trim().equals(eventoStr)) {
-                    evento = ev;
+            for (int i = 0; i < acmeEvento.getEventos().size(); i++) {
+                if (acmeEvento.getEventos().get(i).toString().trim().equals(eventoStr)) {
+                    evento = acmeEvento.getEventos().get(i);
                 }
             }
 

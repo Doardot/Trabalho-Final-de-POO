@@ -6,12 +6,15 @@ import aplicacao.ACMEEquipamento;
 import aplicacao.ACMEEquipe;
 import aplicacao.ACMEEvento;
 
+import dados.Atendimento.Atendimento;
+import dados.Atendimento.AtendimentoStatus;
 import dados.Equipamento.Barco;
 import dados.Equipamento.CaminhaoTanque;
 
 import dados.Equipamento.Escavadeira;
 import dados.Equipe.Equipe;
 import dados.Evento.Ciclone;
+import dados.Evento.Evento;
 import dados.Evento.Seca;
 import dados.Evento.Terremoto;
 
@@ -64,12 +67,33 @@ public class LeituraDeArquivos extends JFrame implements ActionListener, ItemLis
                 case "Atendimento" -> {
                     try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                         String linha;
+                        AtendimentoStatus status = null;
                         while ((linha = br.readLine()) != null) {
                             String[] dados = linha.split(";");
                             int cod = Integer.parseInt(dados[0]);
                             String dataInicio = dados[1];
                             int duracao = Integer.parseInt(dados[2]);
-                            String status = dados[3];
+                            if(dados[3].equals("PENDENTE")){
+                                status = AtendimentoStatus.PEN;
+                            } else if (dados[3].contains("EXECUTANDO")) {
+                                status = AtendimentoStatus.EX;
+                            }
+                            else if(dados[3].equals("FINALIZADO")) {
+                                status = AtendimentoStatus.FIN;
+                            }
+                            else if(dados[3].equals("CANCELADO")) {
+                                status = AtendimentoStatus.CANCEL;
+                            }
+
+                            String codigo = dados[4];
+                            for(Evento eventoAux : evento.getEventos()) {
+                                if(eventoAux.getCodigo().equals(codigo) ) {
+
+                                    atendimento.cadastraAtendimento(new Atendimento(cod, dataInicio, duracao, null, eventoAux, status ));
+                                }
+                            }
+
+                            Atendimento atendimento1 = new Atendimento(cod, dataInicio, duracao, null, null, status);
 
 
                         }

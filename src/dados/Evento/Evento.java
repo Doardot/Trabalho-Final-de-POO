@@ -20,6 +20,8 @@ public class Evento {
 		return "codigo: " + codigo +  ", data: " + data + ", latitude: " + latitude +  ", longitude: " + longitude;
 	}
 
+
+
 	public String getCodigo() {
 		return codigo;
 	}
@@ -31,4 +33,8 @@ public class Evento {
 	public void setEstaDisponivel(boolean estaDisponivel) {
 		this.estaDisponivel = estaDisponivel;
 	}
+	public String toStringDados() {
+		return codigo+";"+data+";"+latitude+";"+longitude;
+	}
+
 }

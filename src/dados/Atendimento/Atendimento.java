@@ -49,11 +49,13 @@ public class Atendimento {
 
 	public String toString() {
 		//implementar toString
-		return "Código: " + cod +
-				"\nData de Início: " + dataInicio +
-				"\nDuração: " + duracao + "\nEquipe: " + equipe +
-				"\nEvento: " + evento + "\nStatus: " + atendimentoStatus;
+		return "Código: " + cod + ", Data de Início: " + dataInicio + ", Duração: " + duracao + ", Equipe: " + equipe +
+				", Evento: " + evento + ", Status: " + atendimentoStatus;
 
 	}
+	public String toStringDados() {
+		return cod+";"+dataInicio+";"+duracao+";"+atendimentoStatus.getStatus()+";"+evento.getCodigo()+"\n";
+	}
+
 
 }

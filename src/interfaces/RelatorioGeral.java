@@ -35,6 +35,7 @@ public class RelatorioGeral extends JFrame implements ActionListener {
         mostrarRelatorio();
         this.setSize(800, 700);
         this.setVisible(true);
+        fecharBotao.addActionListener(this);
     }
 
     public void mostrarRelatorio() {
@@ -56,7 +57,7 @@ public class RelatorioGeral extends JFrame implements ActionListener {
             texto += "\nEventos:\n";
             vazio = false;
             for (Evento evento : listaEvento) {
-                texto += evento.toString();
+                texto += evento.toString() + "\n";
             }
         }
 

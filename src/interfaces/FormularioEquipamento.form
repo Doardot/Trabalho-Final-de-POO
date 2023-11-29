@@ -14,7 +14,7 @@
         </constraints>
         <properties>
           <font size="24"/>
-          <text value="Equipe"/>
+          <text value="Equipamento"/>
         </properties>
       </component>
       <component id="ce2c8" class="javax.swing.JLabel" binding="nomeDaEquipe">

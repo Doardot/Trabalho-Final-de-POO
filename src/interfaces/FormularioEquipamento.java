@@ -49,7 +49,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
         this.acmeEquipamentos = equipamentos;
 
         setContentPane(janelaPrincipal);
-        setTitle("Cadastra equipe");
+        setTitle("Cadastra equipamento");
         this.dispose();
         setSize(800, 700);
         setVisible(true);
@@ -124,9 +124,9 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                             if(verifica) {
                                 acmeEquipamentos.adicionaEquipamento(new CaminhaoTanque(id,name,custo,capacidade));
                                 //acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
-                                texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
 
@@ -143,15 +143,15 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         if(capacidade > 0) {
                             if(verifica) {
                                 acmeEquipamentos.adicionaEquipamento(new Barco(id, name, custo, capacidade));
-                                //acmeEquipamentos.adicionaBarco(id, name, custo, capacidade);
-                                texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
                     }
                     case "Escavadeira" -> {
                         String combustivel = (String) escavadeiraComboBox.getSelectedItem();
+                        combustivel = combustivel.toUpperCase();
                         double carga = -1;
 
                         try {
@@ -165,9 +165,9 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                             if (verifica) {
                                 acmeEquipamentos.adicionaEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
                                // acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
-                                texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
 
@@ -194,10 +194,10 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
             acmeEquipamentos.organizaLista();
             Equipamento aux = null;
-            String texto = areaDeSaida.getText();
+            String texto = "";
             for (int i = 0; i < acmeEquipamentos.getLista().size(); i++) {
                 aux = acmeEquipamentos.getLista().get(i);
-                texto += aux.toString() + "\n";
+                texto += aux.toString();
 
             }
             areaDeSaida.setText(texto);

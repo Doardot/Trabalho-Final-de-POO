@@ -167,27 +167,24 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         }
 
 
-        /*
         else if(e.getSource() == mostraBot) {
             String str = textArea.getText() + "";
-            acmeRescue.reset();
-            if (!acmeRescue.hasNext()) {
+            for (Evento evento : acmeEvento.getEventos()) {
                 str += "NUNHUM DADO CADASTRADO \n";
                 textArea.setText(str);
                 return;
             }
             str += " ----------DADOS-JÁ-CADASTRADOS-------------------------------------------------------------- \n";
-            while(acmeRescue.hasNext()) {
-                Evento evento = acmeRescue.next();
+            for (Evento evento : acmeEvento.getEventos()) {
                 str += evento.toString() + "\n";
             }
             textArea.setText(str);
         }
 
         else if(e.getSource() == acabaBot) {
-            System.exit(0);
+            this.dispose();
         }
-        */
+
     }
 
     public void itemStateChanged(ItemEvent arg0) {
