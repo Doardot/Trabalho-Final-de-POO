@@ -49,4 +49,9 @@ public class Atendimento {
 		return custo;
 	}
 
+	public String toString() {
+		//implementar toString
+		return "Código: " + cod;
+	}
+
 }

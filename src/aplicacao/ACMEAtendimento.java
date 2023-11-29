@@ -9,6 +9,9 @@ public class ACMEAtendimento {
 
     public ACMEAtendimento() {
         atendimentos = new ArrayList<>();
+
+        //atendimento de teste
+        cadastraAtendimento(new Atendimento(1, "01/01/2020", 1, null, null, null));
     }
 
     public ArrayList<Atendimento> getAtendimentos() {
