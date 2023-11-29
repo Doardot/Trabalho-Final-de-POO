@@ -86,17 +86,13 @@ public class LeituraDeArquivos extends JFrame implements ActionListener, ItemLis
                             }
 
                             String codigo = dados[4];
-                            for(Evento eventoAux : evento.getEventos()) {
-                                if(eventoAux.getCodigo().equals(codigo) ) {
 
-                                    atendimento.cadastraAtendimento(new Atendimento(cod, dataInicio, duracao, null, eventoAux, status ));
-                                }
-                                else{
+
                                     Atendimento atendimento1 = new Atendimento(cod, dataInicio, duracao, null, null, status);
                                     atendimento1.setCodigo(codigo);
                                     atendimento.cadastraAtendimento(atendimento1);
-                                }
-                            }
+
+
 
 
 
