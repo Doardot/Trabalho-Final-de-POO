@@ -71,6 +71,10 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
                 for (Atendimento a : acmeAtendimento.getAtendimentos()) {
                     if (a.getCod() == Integer.parseInt(at)){
                         texto += "Atendimento: " + a;
+                        if(a.getStatus().equals(AtendimentoStatus.FIN)) {
+                            new JanelaDeErro("Erro: Atendimento já finalizado");
+                            break;
+                        }
                         if (Objects.equals(boxSitu.getSelectedItem(), "PEN")) {
                             a.setStatus(AtendimentoStatus.PEN);
                         }
