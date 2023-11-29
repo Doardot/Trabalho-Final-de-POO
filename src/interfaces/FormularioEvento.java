@@ -46,7 +46,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         this.pack();
         this.dispose();
         this.setVisible(true);
-        acmeEvento = new ACMEEvento();
+        this.acmeEvento = eventos;
 
         magLab.setVisible(false);
         magText.setVisible(false);
