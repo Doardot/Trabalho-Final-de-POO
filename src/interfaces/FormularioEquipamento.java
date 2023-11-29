@@ -1,7 +1,10 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Equipamento.Barco;
+import dados.Equipamento.CaminhaoTanque;
+import dados.Equipamento.Equipamento;
+import dados.Equipamento.Escavadeira;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,8 +14,7 @@ import java.awt.event.ItemListener;
 import java.util.InputMismatchException;
 
 public class FormularioEquipamento extends JFrame implements ActionListener, ItemListener {
-
-    private ACMERescue acmeRescue;
+    private ACMEEquipamento acmeEquipamentos;
     private JLabel equipeName;
     private JPanel janelaPrincipal;
     private JLabel idPanel;
@@ -40,14 +42,14 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
     private JTextArea areaDeSaida;
     private JButton showList;
     private JButton exitButton;
+    private JComboBox escavadeiraComboBox;
 
 
     public FormularioEquipamento(ACMEEquipamento equipamentos) {
-        acmeRescue = new ACMERescue();
+        this.acmeEquipamentos = equipamentos;
 
         setContentPane(janelaPrincipal);
-        setTitle("Cadastra equipe");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
         setSize(800, 700);
         setVisible(true);
         saveButton.addActionListener(this);
@@ -60,9 +62,12 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
         painelEscavadeira2.setVisible(false);
         painelBarco2.setVisible(false);
         comboBox1.addItemListener( this);
+        escavadeiraComboBox.setVisible(false);
         exitButton.addActionListener(this);
         JScrollPane areaDeSaida = new JScrollPane();
         this.setResizable(false);
+
+        this.setLocationRelativeTo(null);
     }
 
     @Override
@@ -73,14 +78,14 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
             String name = "";
             double custo = 0;
             boolean verifica = true;
+            String texto = "";
             try {
 
                 try {
                     id = Integer.parseInt(idNametxt.getText());
                 }catch (NumberFormatException erro1){
-                    String texto = areaDeSaida.getText();
+
                     texto += "Erro: Numero invalido no campo id\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
@@ -90,18 +95,14 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         throw new InputMismatchException();
                     }
                 }catch(InputMismatchException erro2) {
-                    String texto = areaDeSaida.getText();
                     texto += "Erro: Nome nao pode ser nulo\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
                 try {
                     custo = Double.parseDouble(custoDiatxt.getText());
                 }catch (NumberFormatException erro3){
-                    String texto = areaDeSaida.getText();
                     texto += "Erro: Valor de custo invalido\n";
-                    areaDeSaida.setText(texto);
                     verifica = false;
                 }
 
@@ -117,17 +118,16 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
 
                         }
                         catch (NumberFormatException ei) {
-                            String texto = areaDeSaida.getText();
                             texto += "Erro: Capacidade nao pode ser nula\n";
-                            areaDeSaida.setText(texto);
                             verifica = false;
                         }
                         if(capacidade > -1) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
-                                String texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+                                acmeEquipamentos.adicionaEquipamento(new CaminhaoTanque(id,name,custo,capacidade));
+                                //acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
 
@@ -138,50 +138,37 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                             capacidade = Integer.parseInt(capacidadeBarcoText.getText());
 
                         }catch (NumberFormatException eu) {
-                            String texto = areaDeSaida.getText();
                             texto += "Erro: Capacidade nao pode ser nula\n";
-                            areaDeSaida.setText(texto);
                             verifica = false;
                         }
                         if(capacidade > 0) {
                             if(verifica) {
-                                acmeRescue.cadastraEquipamento(new CaminhaoTanque(id, name, custo, capacidade));
-                                String texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+                                acmeEquipamentos.adicionaEquipamento(new Barco(id, name, custo, capacidade));
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
                     }
                     case "Escavadeira" -> {
-                        String combustivel = "";
+                        String combustivel = (String) escavadeiraComboBox.getSelectedItem();
+                        combustivel = combustivel.toUpperCase();
                         double carga = -1;
-                        try{
-                            combustivel = escavadeiraCombustivelText.getText();
-                            if(combustivel.equals("")) {
-                                throw new InputMismatchException();
-                            }
-                        }catch (InputMismatchException i) {
-                            String texto = areaDeSaida.getText();
-                            texto += "Erro: Combustivel nao pode ser nulo\n";
-                            areaDeSaida.setText(texto);
-                            verifica = false;
-                        }
 
                         try {
                             carga = Double.parseDouble(escavadeiraCargaText.getText());
                         }catch (NumberFormatException ey) {
-                                String texto = areaDeSaida.getText();
-                                texto += "Erro: Carga nao pode ser nula \n";
-                                areaDeSaida.setText(texto);
+                                texto += "Erro: Carga nao pode ser nula\n";
                                 verifica = false;
 
                         }
                         if(carga > 0) {
                             if (verifica) {
-                                acmeRescue.cadastraEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
-                                String texto = areaDeSaida.getText();
-                                texto += "Cadastrado com sucesso\n";
-                                areaDeSaida.setText(texto);
+                                acmeEquipamentos.adicionaEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
+                               // acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
+
+                                texto = "Cadastrado com sucesso\n";
+
                             }
                         }
 
@@ -190,33 +177,34 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                 }
 
             } catch (NullPointerException ex) {
-                String texto = areaDeSaida.getText();
-                texto += "Erro: Id ja cadastrado\n";
-                areaDeSaida.setText(texto);
-            }
 
+                texto += "Erro: Id ja cadastrado\n";
+
+            }
+            new JanelaDeErro(texto);
 
         }
-            /*
-            if (e.getSource() == showList) {
-                if (acmeRescue.getLista().size() == 0) {
-                    String texto = areaDeSaida.getText();
-                    texto += "Erro: Lista vazia\n";
-                    areaDeSaida.setText(texto);
-                }
 
-
-                acmeRescue.organizaLista();
-                Equipamento aux = null;
+        if (e.getSource() == showList) {
+            if (acmeEquipamentos.getLista().size() == 0) {
                 String texto = areaDeSaida.getText();
-                for (int i = 0; i < acmeRescue.getLista().size(); i++) {
-                    aux = acmeRescue.getLista().get(i);
-                    texto += aux.toString() + "\n";
-
-                }
+                texto += "Erro: Lista vazia\n";
                 areaDeSaida.setText(texto);
             }
-            */
+
+
+            acmeEquipamentos.organizaLista();
+            Equipamento aux = null;
+            String texto = "";
+            for (int i = 0; i < acmeEquipamentos.getLista().size(); i++) {
+                aux = acmeEquipamentos.getLista().get(i);
+                texto += aux.toString();
+
+            }
+            areaDeSaida.setText(texto);
+
+        }
+
 
             if (e.getSource() == button1) {
                 idNametxt.setText("");
@@ -231,7 +219,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
             }
 
             if (e.getSource() == exitButton) {
-                System.exit(0);
+                this.dispose();
             }
         }
 
@@ -249,6 +237,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(true);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(false);
+                        escavadeiraComboBox.setVisible(false);
                     }
                     case "Barco" -> {
                         painelCaminhao.setVisible(false);
@@ -257,6 +246,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(true);
+                        escavadeiraComboBox.setVisible(false);
                     }
                     case "Escavadeira" -> {
                         painelCaminhao.setVisible(false);
@@ -264,6 +254,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelBarco.setVisible(false);
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(true);
+                        escavadeiraComboBox.setVisible(true);
                         painelBarco2.setVisible(false);
                     }
                     default -> {
@@ -273,6 +264,7 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         painelCaminhao2.setVisible(false);
                         painelEscavadeira2.setVisible(false);
                         painelBarco2.setVisible(false);
+                        escavadeiraComboBox.setVisible(false);
                     }
                 }
             }

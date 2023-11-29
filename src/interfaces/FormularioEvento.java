@@ -1,7 +1,7 @@
 package interfaces;
 
 import aplicacao.*;
-import dados.*;
+import dados.Evento.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class FormularioEvento extends JFrame implements ActionListener, ItemListener {
-    private ACMERescue acmeRescue;
+    private ACMEEvento acmeEvento;
     private JPanel painel;
     private JTextField codText;
     private JFormattedTextField dataText;
@@ -44,9 +44,10 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
     public FormularioEvento(ACMEEvento eventos) {
         this.add(painel);
         this.pack();
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.dispose();
         this.setVisible(true);
-        acmeRescue = new ACMERescue();
+
+        this.acmeEvento = eventos;
 
         magLab.setVisible(false);
         magText.setVisible(false);
@@ -58,6 +59,8 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         limpaBot.addActionListener(this);
         acabaBot.addActionListener(this);
         comboBox.addItemListener(this);
+
+        this.setLocationRelativeTo(null);
     }
 
 
@@ -112,7 +115,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
                 }
                 else if (comboBox.getSelectedItem().toString() .equals ("Terremoto")) {
                     double magDbl = Double.parseDouble(magText.getText());
-                    if (magDbl < 0) {
+                    if (magDbl < 0 || magDbl > 10) {
                         String str = textArea.getText();
                         str += "ERRO. NUMERO INVÁLIDO.\n";
                         textArea.setText(str);
@@ -139,12 +142,11 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
             }
 
             String str = textArea.getText();
-            try {
-                acmeRescue.cadastraEvento(evento);
+            if (acmeEvento.cadastraEvento(evento)) {
                 str += "EVENTO ADICIONADO: ";
                 str += evento.toString() + "\n";
                 textArea.setText(str);
-            } catch (Exception exception){
+            } else {
                 str += "EVENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE. \n";
                 textArea.setText(str);
             }
@@ -162,29 +164,29 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
             textArea.setText("");
         }
 
+        else if(e.getSource() == acabaBot) {
+            this.dispose();
+        }
 
 
-        /*
         else if(e.getSource() == mostraBot) {
             String str = textArea.getText() + "";
-            acmeRescue.reset();
-            if (!acmeRescue.hasNext()) {
+            for (Evento evento : acmeEvento.getEventos()) {
                 str += "NUNHUM DADO CADASTRADO \n";
                 textArea.setText(str);
                 return;
             }
             str += " ----------DADOS-JÁ-CADASTRADOS-------------------------------------------------------------- \n";
-            while(acmeRescue.hasNext()) {
-                Evento evento = acmeRescue.next();
+            for (Evento evento : acmeEvento.getEventos()) {
                 str += evento.toString() + "\n";
             }
             textArea.setText(str);
         }
 
         else if(e.getSource() == acabaBot) {
-            System.exit(0);
+            this.dispose();
         }
-        */
+
     }
 
     public void itemStateChanged(ItemEvent arg0) {

@@ -14,7 +14,7 @@
         </constraints>
         <properties>
           <font size="24"/>
-          <text value="Equipe"/>
+          <text value="Equipamento"/>
         </properties>
       </component>
       <component id="ce2c8" class="javax.swing.JLabel" binding="nomeDaEquipe">
@@ -125,14 +125,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7637b" class="javax.swing.JTextField" binding="escavadeiraCombustivelText">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="6465f" class="javax.swing.JTextField" binding="escavadeiraCargaText">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -140,6 +132,19 @@
               </grid>
             </constraints>
             <properties/>
+          </component>
+          <component id="e522a" class="javax.swing.JComboBox" binding="escavadeiraComboBox">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Diesel"/>
+                <item value="Gasolina"/>
+                <item value="Alcool"/>
+              </model>
+              <toolTipText value="Diesel&#10;Gasolina&#10;Alcool"/>
+            </properties>
           </component>
         </children>
       </grid>
