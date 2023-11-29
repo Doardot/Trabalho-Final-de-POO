@@ -51,7 +51,26 @@ public class Equipe {
 	}
 
 	public double getDistancia() {
-		return Math.sqrt(Math.pow(latitude, 2) + Math.pow(longitude, 2));
+		double distancia = 0.0;
+		double lat1 = Math.toRadians(latitude);
+		double lat2 = Math.toRadians(atendimento.getEvento().getLatitude());
+		double long1 = Math.toRadians(longitude);
+		double long2 = Math.toRadians(atendimento.getEvento().getLongitude());
+
+		double dlon = (long2 - long1);
+		double dlat = (lat2 - lat1);
+
+		double a = Math.pow(Math.sin(dlat / 2), 2)
+				+ Math.cos(lat1) * Math.cos(lat2)
+				* Math.pow(Math.sin(dlon / 2),2);
+
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+		double r = 6371;
+
+		distancia = c * r;
+
+		return distancia;
 	}
 
 	public double custoEquipamento() {

@@ -28,6 +28,8 @@ public class Atendimento {
 	public int getDuracao() {
 		return duracao;
 	}
+	public Equipe getEquipe() { return equipe; }
+	public Evento getEvento() { return evento; }
 
 	public double calculaCusto() {
 		double custo = 0.0;

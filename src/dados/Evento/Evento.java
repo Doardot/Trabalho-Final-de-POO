@@ -22,4 +22,7 @@ public class Evento {
 	public String getCodigo() {
 		return codigo;
 	}
+	public double getLatitude() { return latitude; }
+	public double getLongitude() { return longitude; }
+
 }
