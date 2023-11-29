@@ -46,7 +46,7 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
         this.pack();
         this.dispose();
         this.setVisible(true);
-        acmeEvento = new ACMEEvento();
+        acmeEvento = eventos;
 
         magLab.setVisible(false);
         magText.setVisible(false);
@@ -139,12 +139,11 @@ public class FormularioEvento extends JFrame implements ActionListener, ItemList
             }
 
             String str = textArea.getText();
-            try {
-                acmeEvento.cadastraEvento(evento);
+            if (acmeEvento.cadastraEvento(evento)) {
                 str += "EVENTO ADICIONADO: ";
                 str += evento.toString() + "\n";
                 textArea.setText(str);
-            } catch (Exception exception){
+            } else {
                 str += "EVENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE. \n";
                 textArea.setText(str);
             }

@@ -5,13 +5,11 @@ import aplicacao.ACMEEquipe;
 import aplicacao.ACMEEvento;
 import dados.Atendimento.Atendimento;
 import dados.Atendimento.AtendimentoStatus;
-import dados.Equipe.*;
 import dados.Evento.*;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,13 +35,12 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
     private ACMEAtendimento acmeAtendimento;
     private ACMEEquipe acmeEquipe;
     private ACMEEvento acmeEvento;
+    private String eventoStr;
 
     public FormularioAtendimento(ACMEAtendimento acmeAtendimento, ACMEEquipe acmeEquipe, ACMEEvento acmeEvento) {
         this.acmeAtendimento = acmeAtendimento;
         this.acmeEquipe = acmeEquipe;
         this.acmeEvento = acmeEvento;
-
-        escolheEvento = new JComboBox<>();
 
         okBot.addActionListener(this);
         limpaBot.addActionListener(this);
@@ -58,7 +55,7 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == okBot) {
-            String eventoStr = (String) escolheEvento.getSelectedItem();
+            eventoStr = (String) escolheEvento.getSelectedItem();
             String dataStr = dataText.getText();
             int codInt = 0;
             int durInt = 0;
@@ -95,13 +92,13 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
 
             Evento evento = null;
             for (Evento ev : acmeEvento.getEventos()) {
-                if (ev.toString().equals(eventoStr)) {
+                if (ev.toString().trim().equals(eventoStr)) {
                     evento = ev;
                 }
             }
 
             if (evento == null) {
-                new JanelaDeErro("\"ERRO. EVENTO NÃO EXISTE.\"");
+                new JanelaDeErro("ERRO. EVENTO NÃO EXISTE.");
             }
             Atendimento atendimento = new Atendimento(codInt, dataStr, durInt, null, evento, AtendimentoStatus.PEN);
             if (acmeAtendimento.cadastraAtendimento(atendimento)) {
@@ -125,7 +122,7 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             ArrayList<Evento> eventos = acmeEvento.getEventos();
             String[] opcoesComboBox = new String[eventos.size()];
 
-            for (int i = 0; i < eventos.size() - 1; i++) {
+            for (int i = 0; i < eventos.size(); i++) {
                 opcoesComboBox[i] = eventos.get(i).toString();
             }
             escolheEvento = new JComboBox<>(opcoesComboBox);
@@ -141,4 +138,5 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             textArea.setText(str);
         }
     }
+
 }
