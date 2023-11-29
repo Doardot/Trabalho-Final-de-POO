@@ -25,4 +25,5 @@ public class Equipamento {
     public String toString() {
         return "Id: " + id + "," + " nome: " + nome + ", Custo por dia: " + custoDia;
     }
+
 }

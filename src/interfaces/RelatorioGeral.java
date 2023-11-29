@@ -23,6 +23,7 @@ public class RelatorioGeral extends JFrame implements ActionListener {
     private JLabel relatorioGeralTitulo;
     private JTextPane textPane1;
     private JPanel janela;
+    private JButton fecharBotao;
 
     public RelatorioGeral(ACMEEquipe equipe, ACMEEvento evento, ACMEAtendimento atendimento, ACMEEquipamento equipamento) {
         this.equipe = equipe;
@@ -35,8 +36,6 @@ public class RelatorioGeral extends JFrame implements ActionListener {
         this.setSize(800, 700);
         this.setVisible(true);
     }
-
-
 
     public void mostrarRelatorio() {
         ArrayList<Atendimento> listaAtendimento;
@@ -90,17 +89,10 @@ public class RelatorioGeral extends JFrame implements ActionListener {
 
     }
 
-
-
-
-
-
-
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == fecharBotao) {
+            this.dispose();
+        }
     }
 }

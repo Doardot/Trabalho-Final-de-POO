@@ -35,22 +35,20 @@ public class FormularioEquipe extends JFrame implements ActionListener {
 
     public FormularioEquipe(ACMEEquipe equipes) {
         this.add(painel);
-        this.pack();
+        this.equipesArray = equipes;
+        this.setSize(1200, 800);
         this.dispose();
         this.setVisible(true);
 
         this.add(painel);
-        this.pack();
+        painel.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        //botão para confirmar o cadastramento
         okBotao.addActionListener(this);
-
-        //mostra os dados cadastrados
         dadosBotao.addActionListener(this);
-        //limpa todos os campos e a área de texto
         limparBotao.addActionListener(this);
+
         //campo de texto
         campoTexto.addComponentListener(new ComponentAdapter() {
             @Override
@@ -59,7 +57,6 @@ public class FormularioEquipe extends JFrame implements ActionListener {
             }
         });
 
-        //finaliza a aplicação
         fecharBotao.addActionListener(this);
     }
 

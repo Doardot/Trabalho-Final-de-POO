@@ -31,6 +31,9 @@ public class Equipe {
 		return longitude;
 	}
 
+	public Equipamento getEquipamento() {
+		return equipamento;
+	}
 	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
 	}
