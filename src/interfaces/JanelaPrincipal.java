@@ -88,7 +88,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
             LeituraDeArquivos leituraDeArquivosForm = new LeituraDeArquivos(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == salvarDados) {
-            //salvarDados();
+            SalvarDados salvarDados1 = new SalvarDados(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == carregarDados) {
             //carregarDados();
@@ -96,26 +96,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         if(e.getSource() == fecharBotao) {
             System.exit(0);
         }
-    }
-    public void cadastraAtendimento () {
-    }
-
-    public void alocarAtendimento () {
-    }
-
-    public void consultarTodosAtendimentos () {
-    }
-
-    public void alterarSituacaoAtendimento () {
-    }
-
-    public void carregarDadosIniciais () {
-    }
-
-    public void salvarDados () {
-    }
-
-    public void carregarDados() {
     }
 
 }
