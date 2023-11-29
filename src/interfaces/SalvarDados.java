@@ -52,6 +52,9 @@ public class SalvarDados extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+
+
+
         if (e.getSource() == cadastrarButton) {
 
             String texto = "";
@@ -63,6 +66,13 @@ public class SalvarDados extends JFrame implements ActionListener {
             assert seletor != null;
             String arquivo = textField1.getText();
             arquivo = "src/" + arquivo + ".csv";
+            PrintStream streamSaida = null;
+            try {
+                streamSaida = new PrintStream(new File(arquivo), Charset.forName("UTF-8"));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            System.setOut(streamSaida);
 
             switch (seletor) {
                 case "Atendimento" -> {
@@ -72,7 +82,7 @@ public class SalvarDados extends JFrame implements ActionListener {
 
                     if (!listaAtendimento.isEmpty()) {
                         for (Atendimento a : listaAtendimento) {
-                       //     texto += a.toStringDados();
+                            texto += a.toStringDados();
                         }
                     }
 
@@ -90,16 +100,30 @@ public class SalvarDados extends JFrame implements ActionListener {
                             texto += equipamento.toStringDados();
                         }
                     }
-                        }
+                }
 
 
 
                 case "Evento" -> {
+                    ArrayList<Evento> listaEvento;
+                    listaEvento = evento.getEventos();
+                    if (!listaEvento.isEmpty()) {
+                        for (Evento evento : listaEvento) {
+                            texto += evento.toStringDados();
+                        }
+                    }
 
 
                 }
                 case "Equipe" -> {
+                    ArrayList<Equipe> listaEquipe;
+                    listaEquipe = equipe.getEquipes();
 
+                    if (!listaEquipe.isEmpty()) {
+                        for (Equipe equipe : listaEquipe) {
+                            texto += equipe.toStringDados();
+                        }
+                    }
 
                 }
             }
