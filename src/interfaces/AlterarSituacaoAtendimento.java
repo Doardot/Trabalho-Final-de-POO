@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class AlterarSituacaoAtendimento extends JFrame implements ActionListener {
 
-    private ACMEAtendimento acmeatendimento;
+    private ACMEAtendimento acmeAtendimento;
     private Atendimento atendimento;
     private JPanel painel;
     private JLabel alteraSitu;
@@ -21,8 +21,9 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
     private JTextField insereAtend;
     private JButton botaoConfirma;
 
+    //A FAZER
     public AlterarSituacaoAtendimento(ACMEAtendimento atendimento) {
-        this.acmeatendimento = atendimento;
+        this.acmeAtendimento = atendimento;
 
         this.add(painel);
         this.setSize(800, 400);
@@ -48,11 +49,14 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
         if(e.getSource() == botaoConfirma) {
             String at = insereAtend.getText();
 
-            for(Atendimento atendimento : acmeatendimento.getAtendimentos()) {
-                if(atendimento.getCod() == Integer.parseInt(at)) {
-                    textoArea.append("Atendimento: " + atendimento + "\n");
+            for(Atendimento a : acmeAtendimento.getAtendimentos()) {
+                if(a.getCod() == Integer.parseInt(at)) {
+                    textoArea.append("Atendimento: " + a.getCod() + "\n");
+                    mostrarAtendimento();
                 }
             }
+
+
         }
 
 
@@ -62,6 +66,26 @@ public class AlterarSituacaoAtendimento extends JFrame implements ActionListener
             this.dispose();
         }
 
+    }
+
+    public void mostrarAtendimento() {
+        /*String texto = "";
+        boolean vazio = true;*/
+        if (!acmeAtendimento.getAtendimentos().isEmpty()) {
+            //vazio = false;
+            for (Atendimento a : acmeAtendimento.getAtendimentos()) {
+                if(a.getEquipe() != null) {
+                    textoArea.append("Equipe alocada: " + a.getEquipe().toString() + "\n");
+                }
+                textoArea.append(a + "\n");
+            }
+        }
+
+        /*if (!vazio) {
+            areaTexto.setText(texto);*/
+        else {
+            new JanelaDeErro("Erro: Não há nenhum atendimento cadastrado");
+        }
     }
 
 
