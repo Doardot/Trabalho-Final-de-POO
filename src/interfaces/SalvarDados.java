@@ -60,76 +60,72 @@ public class SalvarDados extends JFrame implements ActionListener {
             String texto = "";
 
 
-
-
             String seletor = (String) seletorBox.getSelectedItem();
             assert seletor != null;
             String arquivo = textField1.getText();
-            arquivo = "src/" + arquivo + ".csv";
-            PrintStream streamSaida = null;
-            try {
-                streamSaida = new PrintStream(new File(arquivo), Charset.forName("UTF-8"));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+            if (!texto.isBlank()) {
+                arquivo = "src/" + arquivo + ".csv";
+                PrintStream streamSaida = null;
+                try {
+                    streamSaida = new PrintStream(new File(arquivo), Charset.forName("UTF-8"));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                System.setOut(streamSaida);
+
+                switch (seletor) {
+                    case "Atendimento" -> {
+                        ArrayList<Atendimento> listaAtendimento;
+                        listaAtendimento = atendimento.getAtendimentos();
+
+
+                        if (!listaAtendimento.isEmpty()) {
+                            for (Atendimento a : listaAtendimento) {
+                                texto += a.toStringDados();
+                            }
+                        }
+
+
+                    }
+
+                    case "Equipamento" -> {
+                        ArrayList<Equipamento> listaEquipamento;
+                        listaEquipamento = equipamento.getLista();
+
+                        if (!listaEquipamento.isEmpty()) {
+                            for (Equipamento equipamento : listaEquipamento) {
+                                texto += equipamento.toStringDados();
+                            }
+                        }
+                    }
+
+
+                    case "Evento" -> {
+                        ArrayList<Evento> listaEvento;
+                        listaEvento = evento.getEventos();
+                        if (!listaEvento.isEmpty()) {
+                            for (Evento evento : listaEvento) {
+                                texto += evento.toStringDados();
+                            }
+                        }
+
+
+                    }
+                    case "Equipe" -> {
+                        ArrayList<Equipe> listaEquipe;
+                        listaEquipe = equipe.getEquipes();
+
+                        if (!listaEquipe.isEmpty()) {
+                            for (Equipe equipe : listaEquipe) {
+                                texto += equipe.toStringDados();
+                            }
+                        }
+
+                    }
+                }
+                System.out.println(texto);
             }
-            System.setOut(streamSaida);
-
-            switch (seletor) {
-                case "Atendimento" -> {
-                    ArrayList<Atendimento> listaAtendimento;
-                    listaAtendimento = atendimento.getAtendimentos();
-
-
-                    if (!listaAtendimento.isEmpty()) {
-                        for (Atendimento a : listaAtendimento) {
-                            texto += a.toStringDados();
-                        }
-                    }
-
-
-
-
-                }
-
-                case "Equipamento" -> {
-                    ArrayList<Equipamento> listaEquipamento;
-                    listaEquipamento = equipamento.getLista();
-
-                    if (!listaEquipamento.isEmpty()) {
-                        for (Equipamento equipamento : listaEquipamento) {
-                            texto += equipamento.toStringDados();
-                        }
-                    }
-                }
-
-
-
-                case "Evento" -> {
-                    ArrayList<Evento> listaEvento;
-                    listaEvento = evento.getEventos();
-                    if (!listaEvento.isEmpty()) {
-                        for (Evento evento : listaEvento) {
-                            texto += evento.toStringDados();
-                        }
-                    }
-
-
-                }
-                case "Equipe" -> {
-                    ArrayList<Equipe> listaEquipe;
-                    listaEquipe = equipe.getEquipes();
-
-                    if (!listaEquipe.isEmpty()) {
-                        for (Equipe equipe : listaEquipe) {
-                            texto += equipe.toStringDados();
-                        }
-                    }
-
-                }
-            }
-            System.out.println(texto);
         }
-
     }
 
 }
