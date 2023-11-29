@@ -70,6 +70,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
 
 
                     }
+                    new JanelaDeErro("Cadastrado com sucesso");
                 } catch (IOException x) {
                     new JanelaDeErro("Erro: Arquivo não encontrado");
 
@@ -86,31 +87,28 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
                         String Codinome = dados[3];
                         int tipo = Integer.parseInt(dados[4]);
 
-                        if(tipo == 1 ) { // Barco
+                        if (tipo == 1) { // Barco
                             int capacidade = Integer.parseInt(dados[5]);
                             equipamento.adicionaEquipamento(new Barco(id, nome, custodia, capacidade));
                         }
-                        if(tipo ==2) { // Caminhao
+                        if (tipo == 2) { // Caminhao
                             double capacidade = Double.parseDouble(dados[5]);
                             equipamento.adicionaEquipamento(new CaminhaoTanque(id, nome, custodia, capacidade));
                         }
-                        if(tipo==3) { // Escavadeira
+                        if (tipo == 3) { // Escavadeira
                             String combustivel = dados[5];
                             double carga = Double.parseDouble(dados[6]);
-                            equipamento.adicionaEquipamento(new Escavadeira(id,nome,custodia,combustivel,carga));
+                            equipamento.adicionaEquipamento(new Escavadeira(id, nome, custodia, combustivel, carga));
 
                         }
                     }
-                } catch (FileNotFoundException x) {
+                    new JanelaDeErro("Cadastrado com sucesso");
+                } catch (Exception x) {
                     new JanelaDeErro("Erro: Arquivo não encontrado");
 
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+
                 }
-
-
             }
-
 
             else if(arquivo.equals("src/EXEMPLO-EQUIPE.csv")) {
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
@@ -125,6 +123,7 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
                         new Equipe(codinome, quantidade, latitude, longitude);
 
                     }
+                    new JanelaDeErro("Cadastrado com sucesso");
                 } catch (Exception x) {
                     new JanelaDeErro("Erro: Arquivo não encontrado");
 
@@ -159,12 +158,15 @@ public class LeituraDeArquivos extends JFrame implements ActionListener {
 
                         }
                     }
+                    new JanelaDeErro("Cadastrado com sucesso");
                 } catch (Exception x) {
                     new JanelaDeErro("Erro: Arquivo não encontrado");
 
                 }
 
-
+            }
+            else{
+                new JanelaDeErro("Erro: Arquivo não encontrado");
             }
         }
     }
