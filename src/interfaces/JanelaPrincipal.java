@@ -64,6 +64,10 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         salvarDados.addActionListener(this);
         carregarDados.addActionListener(this);
         fecharBotao.addActionListener(this);
+
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.setLocationRelativeTo(null);
     }
 
     public void actionPerformed(ActionEvent e) {

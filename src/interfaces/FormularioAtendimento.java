@@ -48,7 +48,6 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
 
         this.add(painel);
         this.pack();
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
