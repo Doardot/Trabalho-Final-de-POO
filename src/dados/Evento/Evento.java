@@ -19,10 +19,15 @@ public class Evento {
 		return "codigo: " + codigo +  ", data: " + data + ", latitude: " + latitude +  ", longitude: " + longitude;
 	}
 
+
+
 	public String getCodigo() {
 		return codigo;
 	}
 	public double getLatitude() { return latitude; }
 	public double getLongitude() { return longitude; }
+	public String toStringDados() {
+		return codigo+";"+data+";"+latitude+";"+longitude;
+	}
 
 }

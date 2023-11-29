@@ -50,6 +50,13 @@ public class Equipe {
 				+ " Latitude: " + latitude + " Longitude: " + longitude+"\n";
 	}
 
+	public String toStringDados() {
+		return codinome+";"+quantidade+";"+latitude+";"+longitude+"\n";
+	}
+
+
+
+
 	public double getDistancia() {
 		double distancia = 0.0;
 		double lat1 = Math.toRadians(latitude);

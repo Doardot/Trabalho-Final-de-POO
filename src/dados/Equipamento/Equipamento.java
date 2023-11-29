@@ -11,6 +11,12 @@ public class Equipamento {
         this.nome = nome;
         this.custoDia = custoDia;
     }
+    public Equipamento(int id, String nome, double custoDia, String codinome) {
+        this.id = id;
+        this.nome = nome;
+        this.custoDia = custoDia;
+        this.codinome = codinome;
+    }
 
     public void setCodinome(String codinome) {
         this.codinome = codinome;
@@ -32,7 +38,7 @@ public class Equipamento {
     }
 
     public String toStringDados(){
-        return id+";"+nome+";"+custoDia+";";
+        return id+";"+nome+";"+custoDia+";"+codinome;
     }
 
 

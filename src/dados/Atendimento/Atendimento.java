@@ -55,5 +55,9 @@ public class Atendimento {
 				"\nEvento: " + evento + "\nStatus: " + atendimentoStatus;
 
 	}
+	public String toStringDados() {
+		return cod+";"+dataInicio+";"+duracao+";"+atendimentoStatus.getStatus()+";"+evento.getCodigo()+"\n";
+	}
+
 
 }
