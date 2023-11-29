@@ -47,7 +47,7 @@ public class Equipe {
 
 	public String toString() {
 		return "Codinome: " + codinome + " Quantidade de membros: " + quantidade
-				+ " Latitude: " + latitude + " Longitude: " + longitude;
+				+ " Latitude: " + latitude + " Longitude: " + longitude+"\n";
 	}
 
 	public double getDistancia() {

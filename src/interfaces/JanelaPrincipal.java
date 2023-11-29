@@ -24,6 +24,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
     private JButton relatorioGeral;
     private JButton leituraArquivo;
     private JButton vinculaEquipamento;
+    private JButton salvarDados;
 
 
     public JanelaPrincipal() {
@@ -42,6 +43,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         relatorioGeral.addActionListener(this);
         leituraArquivo.addActionListener(this);
         vinculaEquipamento.addActionListener(this);
+        salvarDados.addActionListener(this);
         fecharBotao.addActionListener(this);
     }
 
@@ -66,6 +68,9 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         }
         if(e.getSource() == leituraArquivo) {
             LeituraDeArquivos leituraDeArquivosForm = new LeituraDeArquivos(equipe, evento, atendimento, equipamento);
+        }
+        if(e.getSource() == salvarDados) {
+            SalvarDados salvarDados1 = new SalvarDados(equipe, evento, atendimento, equipamento);
         }
         if(e.getSource() == fecharBotao) {
             System.exit(0);
