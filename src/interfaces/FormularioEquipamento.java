@@ -1,7 +1,10 @@
 package interfaces;
 
 import aplicacao.*;
+import dados.Equipamento.Barco;
+import dados.Equipamento.CaminhaoTanque;
 import dados.Equipamento.Equipamento;
+import dados.Equipamento.Escavadeira;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -119,7 +122,8 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > -1) {
                             if(verifica) {
-                                acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
+                                acmeEquipamentos.adicionaEquipamento(new CaminhaoTanque(id,name,custo,capacidade));
+                                //acmeEquipamentos.adicionaCaminhao(id, name, custo, capacidade);
                                 texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -138,7 +142,8 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(capacidade > 0) {
                             if(verifica) {
-                                acmeEquipamentos.adicionaBarco(id, name, custo, capacidade);
+                                acmeEquipamentos.adicionaEquipamento(new Barco(id, name, custo, capacidade));
+                                //acmeEquipamentos.adicionaBarco(id, name, custo, capacidade);
                                 texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
@@ -158,7 +163,8 @@ public class FormularioEquipamento extends JFrame implements ActionListener, Ite
                         }
                         if(carga > 0) {
                             if (verifica) {
-                                acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
+                                acmeEquipamentos.adicionaEquipamento(new Escavadeira(id, name, custo, combustivel, carga));
+                               // acmeEquipamentos.adicionaEscavadeira(id, name, custo, combustivel, carga);
                                 texto = areaDeSaida.getText();
                                 texto += "Cadastrado com sucesso\n";
                                 areaDeSaida.setText(texto);
