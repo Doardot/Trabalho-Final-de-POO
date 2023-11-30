@@ -104,11 +104,11 @@ public class FormularioAtendimento extends JFrame implements ActionListener {
             }
             Atendimento atendimento = new Atendimento(codInt, dataStr, durInt, null, evento, AtendimentoStatus.PEN);
             if (acmeAtendimento.cadastraAtendimento(atendimento)) {
-                new JanelaDeErro("ATENDIMENTO ADICIONADO.");
                 evento.setEstaDisponivel(false);
                 acmeAtendimento.alocaEquipe(acmeEquipe.getEquipes());
                 this.dispose();
                 FormularioAtendimento formAtendimento = new FormularioAtendimento(acmeAtendimento, acmeEquipe, acmeEvento);
+                new JanelaDeErro("ATENDIMENTO ADICIONADO.");
             } else {
                 new JanelaDeErro("ATENDIMENTO NÃO ADICIONADO. POIS ESTE CÓDIGO JÁ EXISTE.");
             }
