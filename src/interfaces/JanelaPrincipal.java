@@ -118,6 +118,8 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 
         switch (arquivo) {
             case "src/EXEMPLO-ATENDIMENTOS.csv" -> {
+
+
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                     String linha;
                     AtendimentoStatus status = null;
@@ -138,25 +140,16 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
                             status = AtendimentoStatus.CANCEL;
                         }
 
-                        String codigo = dados[4];
-                        for(Evento eventoAux : evento.getEventos()) {
-                            if(eventoAux.getCodigo().equals(codigo) ) {
 
-                                atendimento.cadastraAtendimento(new Atendimento(cod, dataInicio, duracao, null, eventoAux, status ));
-                            }
-                            else{
-                                Atendimento atendimento1 = new Atendimento(cod, dataInicio, duracao, null, null, status);
-                                atendimento1.setCodigo(codigo);
-                                atendimento.cadastraAtendimento(atendimento1);
+                        String codigo = dados[4];
+                        for(Evento evento : evento.getEventos()) {
+                            if(evento.getCodigo().equals(codigo)) {
+                                atendimento.cadastraAtendimento(new Atendimento(cod, dataInicio, duracao, null, evento, status));
+                                atendimento.alocaEquipe(equipe.getEquipes());
                             }
                         }
-
-
-
-
                     }
-
-                } catch (IOException x) {
+            } catch (IOException x) {
                     new JanelaDeErro("Erro: Arquivo não encontrado");
 
                 }
@@ -225,7 +218,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
                         if (tipo == 3) { // Seca
                             int estiagem = Integer.parseInt(dados[5]);
                             evento.cadastraEvento(new Seca(codigo, data, latitude, longitude, estiagem));
-
                         }
                     }
 
@@ -247,7 +239,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
                         double longitude = Double.parseDouble(dados[3]);
 
                         equipe.addEquipe(new Equipe(codinome, quantidade, latitude, longitude, null));
-
+                        atendimento.alocaEquipe(equipe.getEquipes());
                     }
 
                 } catch (Exception x) {
