@@ -83,7 +83,7 @@ public class VinculaEquipamento extends JFrame implements ActionListener {
                     return;
                 }
                 equipeIN.setEquipamento(equipamentoIN);
-                equipamentoIN.setCodinome(equipeIN.getCodinome());
+                //equipamentoIN.setCodinome(equipeIN.getCodinome());
                 textoVinc.append("Equipamento: " + equipamentoSelecionado + ", Vinculado à equipe: " + equipeSelecionada + "\n");
                 textoVinc.append("Codinome: " + equipeIN.getCodinome()  + ", Equipamento:" + equipeIN.getEquipamento() + "\n") ;
 

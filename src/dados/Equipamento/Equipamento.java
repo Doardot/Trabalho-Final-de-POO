@@ -1,26 +1,28 @@
 package dados.Equipamento;
+
+import dados.Equipe.Equipe;
+
 public class Equipamento {
     private int id;
     private String nome;
     private double custoDia;
-    private String codinome;
+    private Equipe equipe;
 
 
     public Equipamento(int id, String nome, double custoDia) {
         this.id = id;
         this.nome = nome;
         this.custoDia = custoDia;
+        this.equipe = null;
     }
     public Equipamento(int id, String nome, double custoDia, String codinome) {
         this.id = id;
         this.nome = nome;
         this.custoDia = custoDia;
-        this.codinome = codinome;
+
     }
 
-    public void setCodinome(String codinome) {
-        this.codinome = codinome;
-    }
+
     public int getId() {
         return id;
     }
@@ -38,7 +40,7 @@ public class Equipamento {
     }
 
     public String toStringDados(){
-        return id+";"+nome+";"+custoDia+";"+codinome;
+        return id+";"+nome+";"+custoDia+";"+equipe.getCodinome()+"\n";
     }
 
 

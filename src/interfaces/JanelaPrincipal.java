@@ -8,6 +8,7 @@ import dados.Atendimento.Atendimento;
 import dados.Atendimento.AtendimentoStatus;
 import dados.Equipamento.Barco;
 import dados.Equipamento.CaminhaoTanque;
+import dados.Equipamento.Equipamento;
 import dados.Equipamento.Escavadeira;
 import dados.Equipe.Equipe;
 import dados.Evento.Ciclone;
@@ -21,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class JanelaPrincipal extends JFrame implements ActionListener {
     private ACMEEquipe equipe;
@@ -119,7 +121,6 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
         switch (arquivo) {
             case "src/EXEMPLO-ATENDIMENTOS.csv" -> {
 
-
                 try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                     String linha;
                     AtendimentoStatus status = null;
@@ -165,25 +166,50 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
                         double custodia = Double.parseDouble(dados[2]);
                         String codinome = dados[3];
                         int tipo = Integer.parseInt(dados[4]);
-
+                        boolean adicionou = true;
                         if (tipo == 1) { // Barco
                             int capacidade = Integer.parseInt(dados[5]);
-                            Barco barco = new Barco(id, nome, custodia, capacidade);
-                            barco.setCodinome(codinome);
-                            equipamento.adicionaEquipamento(barco);
+                            ArrayList<Equipe> array = equipe.getEquipes();
+                            for(Equipe equi : array) {
+                                if (equi.getCodinome().equals(codinome)) {
+
+                                    Equipamento aux = new Barco(id, nome, custodia, capacidade);
+                                    equi.setEquipamento(aux);
+                                    equipamento.adicionaEquipamento(aux);
+                                    adicionou = false;
+                                }
+                            }
+                                if(adicionou) equipamento.adicionaEquipamento(new Barco(id, nome, custodia,capacidade));
+
                         }
                         if (tipo == 2) { // Caminhao
                             double capacidade = Double.parseDouble(dados[5]);
-                            CaminhaoTanque caminhao = new CaminhaoTanque(id, nome, custodia, capacidade);
-                            caminhao.setCodinome(codinome);
-                            equipamento.adicionaEquipamento(caminhao);
+                            ArrayList<Equipe> array = equipe.getEquipes();
+                            for(Equipe equi : array) {
+                                if (equi.getCodinome().equals(codinome)) {
+                                    Equipamento aux = new CaminhaoTanque(id, nome, custodia, capacidade);
+                                    equi.setEquipamento(aux);
+                                    equipamento.adicionaEquipamento(aux);
+                                    adicionou = false;
+                                }
+                            }
+                                if(adicionou) equipamento.adicionaEquipamento(new CaminhaoTanque(id, nome, custodia, capacidade));
+
                         }
                         if (tipo == 3) { // Escavadeira
                             String combustivel = dados[5];
                             double carga = Double.parseDouble(dados[6]);
-                            Escavadeira escavadeira = new Escavadeira(id, nome, custodia, combustivel, carga);
-                            escavadeira.setCodinome(codinome);
-                            equipamento.adicionaEquipamento(escavadeira);
+                            ArrayList<Equipe> array = equipe.getEquipes();
+                            for(Equipe equi : array) {
+                                if (equi.getCodinome().equals(codinome)) {
+                                    Equipamento aux = new Escavadeira(id, nome, custodia, combustivel, carga);
+                                    equi.setEquipamento(aux);
+                                    equipamento.adicionaEquipamento(aux);
+                                    adicionou = false;
+                                }
+                            }
+                               if(adicionou) equipamento.adicionaEquipamento(new Escavadeira(id, nome, custodia, combustivel, carga));
+
 
                         }
                     }
