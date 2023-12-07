@@ -1,18 +1,19 @@
-## Getting Started
+# Trabalho Final de POO
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este é o trabalho final para a disciplina de Programação Orientada a Objeto, de segundo semestre.
 
-## Folder Structure
+O objetivo do trabalho é implementar um sistema de gerenciamento de eventos, equipes, equipamentos e atendimentos, capaz de atender as necessidades de uma empresa que oferece serviços de atendimento a desastres naturais em eventos como ciclones, terremotos e secas. Para os atendimentos a empresa possui várias equipes e equipamentos distribuídos pelo mundo.
 
-The workspace contains two folders by default, where:
+O trabalho também visa a implementação dos conceitos vistos na disciplina, contendo tratamento de exceções, uso de interface gráfica com o usuário, uso de herança, polimorfismo e coleções.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Descrição geral
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Todo evento possui um código único, uma data e uma localização (latitude e longitude). Um evento pode ser: ***Ciclone, terremoto ou seca.***
+  
+Uma equipe possui um codinome único, uma quantidade de membros e a sua localização (latitude e longitude). Uma equipe pode ter vários equipamentos. Uma equipe só consegue atender eventos até 5.000 quilômetros de distância.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Um equipamento possui um identificador único, um nome e o valor de custo por dia. Um equipamento pode ser: ***Barco, caminhão tanque ou escavadeira.***
 
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Cada atendimento possui um código único, uma data de início e uma duração (em dias). Um atendimento possui um evento e pode ter uma equipe alocada.
+- Um atendimento pode estar em um dos estados (status): PENDENTE, EXECUTANDO, FINALIZADO, CANCELADO.
+- Quando um atendimento é criado fica no estado PENDENTE, quando há uma equipe é alocada fica no estado EXECUTANDO, quando o atendimento termina fica no estado FINALIZADO. A qualquer momento atendimento pode ser CANCELADO.
